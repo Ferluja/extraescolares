@@ -47,3 +47,4 @@
     </div>
 </div>
 @endsection
+<script src={{asset('bootstrap/js/signin.js')}}></script>
