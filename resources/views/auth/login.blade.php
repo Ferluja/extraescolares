@@ -1,5 +1,7 @@
 @extends('layout.plantilla')
+@section('titulo','login')
 @section('contenido')
+
 <div class="container my-5">
     <div class="row  justify-content-center">
         <div class="col-md-5">
@@ -8,11 +10,12 @@
                     <form action="" method="post">
                         @csrf
                         <div class="profile-container text-center pb-3">
-                            <img src="https://static.vecteezy.com/system/resources/previews/009/734/564/original/default-avatar-profile-icon-of-social-media-user-vector.jpg" alt="profile" class=" profile rounded-circle shadow" >
+                            <img src="https://static.vecteezy.com/system/resources/previews/009/734/564/original/default-avatar-profile-icon-of-social-media-user-vector.jpg" alt="profile"
+                             class=" profile rounded-circle shadow" width="241" height="241">
                         </div>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control rounded-pill" id="complete_name" name="complete_name" placeholder="Nombre Completo">
-                            <label for="complete_name" class="form-label"><i class="fa-sharp fa-solid fa-file-signature"></i> Nombre Completo</label>
+                            <label for="complete_name" class="form-label"><i class="fa-solid fa-file-signature"></i> Nombre Completo</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control rounded-pill" id="email" name="email" placeholder="Correo">
@@ -47,4 +50,3 @@
     </div>
 </div>
 <script src={{asset('bootstrap/js/signin.js')}}></script>
-@endsection

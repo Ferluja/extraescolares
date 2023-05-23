@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
-    <title>{{ $title }}</title>
+    <link rel="stylesheet" href="{{asset('fontawesome/css/all.min.css')}}">
+    <title>@yield('titulo')</title>
 </head>
 <body>
     @yield('contenido')
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('fontawesome/js/all.min.js')}}"></script>
 </body>
 </html>
