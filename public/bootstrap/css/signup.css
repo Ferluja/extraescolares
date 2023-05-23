@@ -1,0 +1,21 @@
+.profile-container {
+    margin-bottom: -60px;
+    .profile {
+        position: relative;
+        width: 241px;
+        height: 241px;
+        top: -60px;
+        .img {
+            width: inherit;
+            height: inherit;
+        }
+        .photo_profile_container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            top: -60px;
+            right: -190px;
+        }
+    }
+    
+}

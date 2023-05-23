@@ -1,5 +1,6 @@
 @extends('layout.plantilla')
 @section('contenido')
+<link rel="stylesheet" href={{asset('bootstrap/css/signup.css')}}>
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
