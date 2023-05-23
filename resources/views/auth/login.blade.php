@@ -42,9 +42,16 @@
                             <input class="form-check-input" type="checkbox" role="switch" id="show_hide_password">
                             <label class="form-check-label" for="show_hide_password" id="text_show_hide_password">Mostrar contraseña</label>
                         </div>
-                        <button type="submit" class="btn btn-success  rounded-pill w-100"><i class="fa-solid fa-right-to-bracket"></i> Ingresar</button>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <button type="submit" class="btn btn-success  rounded-pill w-100  "><i class="fa-solid fa-right-to-bracket"></i> Ingresar</button>
+                            </div>
+                            <div class="col">
+                                
+                            </div>
+                        </div>
                     </form>
-                </div>
+                </div><button type="submit" class="btn btn-primary  rounded-pill w-30"><i class="fa-solid fa-plus"></i> Agregar Usuario</button>
             </div>
         </div>
     </div>
