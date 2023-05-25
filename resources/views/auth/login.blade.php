@@ -51,4 +51,3 @@
 </div>
 <script src={{asset('bootstrap/js/signin.js')}}></script>
 @endsection
-
