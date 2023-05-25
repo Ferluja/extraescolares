@@ -1,5 +1,6 @@
 @extends('layout.plantilla')
 @section('contenido')
+<link rel="stylesheet" href={{asset('bootstrap/css/registro.css')}}>
 <link rel="stylesheet" href={{asset('bootstrap/css/signup.css')}}>
 <div class="container my-5">
     <div class="row justify-content-center">
@@ -9,11 +10,11 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="profile-container pb-3">
-                            <div class="profile mx-auto">
-                                <img src="https://static.vecteezy.com/system/resources/previews/009/734/564/original/default-avatar-profile-icon-of-social-media-user-vector.jpg" alt="Profile" class="rounded-circle shadow" id="photo" width="242px" height="241px">
-                                <div class="photo_profile_container bg-success d-flex align-items-center justify-content-center rounded-circle">
-                                    <label for="photo_profile" class="text-white" title="Subir foto"><i class="fa-solid fa-camera"></i></label>
-                                    <input type="file" id="photo_profile" name="photo_profile" hidden>
+                            <div class="profile mx-auto" >
+                                <img src="https://static.vecteezy.com/system/resources/previews/009/734/564/original/default-avatar-profile-icon-of-social-media-user-vector.jpg" alt="Profile" class="rounded-circle shadow" id="photo" >
+                                <div  class="photo_profile_container bg-success d-flex align-items-center justify-content-center rounded-circle">
+                                    <label for="photo_profile" class="text-white" title="Subir foto" ><i class="fa-solid fa-camera"></i></label>
+                                    <input type="file" id="photo_profile" name="photo_profile"  hidden>
                                 </div>
                             </div>
                         </div>
