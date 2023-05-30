@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('registro');
-});
+// Route::get('/', function () {
+//     return view('registro');
+// });
 
 Route::view('/login','auth.login');
 
