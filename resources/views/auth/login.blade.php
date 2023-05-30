@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo','login')
+@section('titulo',$titulo)
 @section('contenido')
 
 <div class="container my-5">
@@ -8,7 +8,8 @@
             <div class="card shadow">
                 <div class="card-body">
                     {{-- {{ route('logear') }} --}}
-                    <form action="" method="post">
+                    <x-show_errors_validate></x-show_errors_validate>
+                    <form action="{{route('accesoLogin')}}" method="post">
                         @csrf
                         @method('POST')
                         <div class="profile-container text-center pb-3">
@@ -16,11 +17,11 @@
                              class=" profile rounded-circle shadow" width="241" height="241">
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control  rounded-pill" id="name" name="name" placeholder="Usuario">
+                            <input type="text" class="form-control  rounded-pill" id="name" name="name" placeholder="Usuario" value="{{old('name')}}">
                             <label for="user" class="form-label"><i class="fa-solid fa-user"></i> Usuario</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control  rounded-pill" id="password" name="password" placeholder="Contraseña">
+                            <input type="password" class="form-control  rounded-pill" id="password" name="password" placeholder="Contraseña" value="{{old('password')}}">
                             <label for="password" class="form-label"><i class="fa-solid fa-lock"></i> Contraseña</label>  
                         </div>
                         <div class="form-check form-switch mb-5 mx-2">

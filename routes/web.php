@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +15,23 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/*Rutas del login*/
 
-// Route::get('/', function () {
-//     return view('registro');
-// });
+Route::get('/',[LoginController::class,'login'])->name('login');
+Route::get('/nuevoAdmin',[LoginController::class,'nuevoAdmin'])->name('nuevoAdmin'); 
+Route::post('/accesoLogin',[LoginController::class,'accesoLogin'])->name('accesoLogin');
+Route::view('/registro','registro');
 
-Route::view('/login','auth.login');
+
+
+/*Rutas del administrador*/
+Route::view('/dashboard','auth.dashboard')->name('dashboard');
+
+/*Rutas de los estudiantes*/
+
+
+/*Rutas del servicio*/
+
 
 //-------------------------------------------------------------
 // Route::get('/', [AuthController::class, 'login'])->name('login');
