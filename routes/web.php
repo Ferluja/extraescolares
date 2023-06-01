@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RutasProtegidasAdmin;
+use App\Http\Controllers\RutasProtegidasAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +26,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 
 /*Rutas del administrador*/
-Route::get('/dashboard',[RutasProtegidasAdmin::class,'dashboard'])->name('dashboard');
+Route::get('/dashboard',[RutasProtegidasAdminController::class,'dashboard'])->name('dashboard');
 
 /*Rutas de los estudiantes*/
 
