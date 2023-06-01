@@ -25,7 +25,7 @@ Route::view('/registro','registro');
 
 
 /*Rutas del administrador*/
-Route::view('/dashboard','auth.dashboard')->name('dashboard');
+Route::view('/dashboard','admin.dashboard')->name('dashboard');
 
 /*Rutas de los estudiantes*/
 
@@ -33,10 +33,4 @@ Route::view('/dashboard','auth.dashboard')->name('dashboard');
 /*Rutas del servicio*/
 
 
-//-------------------------------------------------------------
-// Route::get('/', [AuthController::class, 'login'])->name('login');
-// Route::post('/logear', [AuthController::class, 'logear'])->name('logear');
-// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-// Route::get('/agregarUsuario', [AuthController::class, 'agregarUsuario']);
-// Route::get('/inicio', [Admin::class, 'index'])->name('inicio');
-// Route::view('index','admin/index');
+

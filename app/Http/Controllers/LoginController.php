@@ -29,7 +29,7 @@ class LoginController extends Controller
             $nombre_completo = $datos_usuarios->nombre.' '.$datos_usuarios->apellido_paterno.' '.$datos_usuarios->apellido_materno;
             session(['nombre_usuario'=>$nombre_completo]);
             session(['perfil'=>$datos_usuarios->id_perfiles]);
-            return view('auth.dashboard',compact('titulo'));
+            return redirect()->route('dashboard');
         }else{
             $request->session()->flash('css','danger');
             $request->session()->flash('mensaje','Las credenciales indicadas

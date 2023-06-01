@@ -1,0 +1,28 @@
+.btn-open-aside {
+    width: 40px;
+    height: 40px;
+    background-color: #dddddd;
+    z-index: 1;
+}
+.btn-close-aside {
+    width: 25px;
+    height: 25px;
+}
+.aside {
+    width: 250px;
+    background: #1B3B6B;
+}
+.main {
+    margin-left: 250px;
+    background-color:FFFFFF;
+}
+@media screen and (max-width: 576px) {
+    .aside {
+      display: none !important;
+    }
+    .main{
+        margin-left: 0;
+    }
+}
+
+  

@@ -1,0 +1,49 @@
+.badge-container {
+    width: 150px;
+    height: 150px;
+    left: 80px;
+    top: 50px;
+    .icon-deportivo{
+        margin-right: -40px;
+    }
+    .icon {
+        position: absolute; 
+        width: 40px;
+        height: 40px;
+        top: -70px !important;
+        right: -60px;
+        .i-check {
+            margin-left: -0px;
+            color: black;
+        }
+    }
+}
+
+.main {
+    display: flex;
+    height: 100vh;
+    line-height: 50vh;
+    width: 75vw;
+}
+.text-left {
+    text-align: left;
+}
+
+
+
+/* .status-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .active {
+    background-color: green;
+    color: white;
+  }
+  
+  .inactive {
+    background-color: gray;
+    color: white;
+  } */
+  
