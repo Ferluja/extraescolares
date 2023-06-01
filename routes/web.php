@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RutasProtegidasAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,12 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[LoginController::class,'login'])->name('login');
 Route::get('/nuevoAdmin',[LoginController::class,'nuevoAdmin'])->name('nuevoAdmin'); 
 Route::post('/accesoLogin',[LoginController::class,'accesoLogin'])->name('accesoLogin');
-Route::view('/registro','registro');
-
+Route::view('/registro','admin.registro');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 
 /*Rutas del administrador*/
-Route::view('/dashboard','admin.dashboard')->name('dashboard');
+Route::get('/dashboard',[RutasProtegidasAdmin::class,'dashboard'])->name('dashboard');
 
 /*Rutas de los estudiantes*/
 

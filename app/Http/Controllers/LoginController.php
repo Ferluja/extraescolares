@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -15,7 +16,7 @@ class LoginController extends Controller
         return view('auth.login',compact('titulo'));
     }
     public function accesoLogin(Request $request){
-        $titulo = 'Dashboard';
+        
         $request->validate([
             'name'=>'required',
             'password'=>'required'
@@ -43,6 +44,11 @@ class LoginController extends Controller
             'email'=> 'roldan',
             'password'=> Hash::make('1234')
         ]);
+        return redirect()->route('login');
+    }
+    public function logout(){
+        Auth::logout();
+        Session::flush();
         return redirect()->route('login');
     }
 }

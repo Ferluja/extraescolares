@@ -7,13 +7,12 @@
         <div class="col-md-5">
             <div class="card shadow">
                 <div class="card-body">
-                    {{-- {{ route('logear') }} --}}
                     <x-show_errors_validate></x-show_errors_validate>
                     <form action="{{route('accesoLogin')}}" method="post">
                         @csrf
                         @method('POST')
                         <div class="profile-container text-center pb-3">
-                            <img src="https://static.vecteezy.com/system/resources/previews/009/734/564/original/default-avatar-profile-icon-of-social-media-user-vector.jpg" alt="profile"
+                            <img src="{{asset('img/itma2.png')}}" alt="profile"
                              class=" profile rounded-circle shadow" width="241" height="241">
                         </div>
                         <div class="form-floating mb-3">
@@ -34,6 +33,7 @@
                             </div>
                         </div>
                     </form>
+                    <x-flash></x-flash>
                 </div>
             </div>
         </div>

@@ -12,7 +12,8 @@
 </head>
 <body>
     @yield('contenido')
-    <x-flash></x-flash>
+
+    
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('fontawesome/js/all.min.js')}}"></script>
     <script src="{{ asset('bootstrap/js/scaffold.js')}}"></script>
