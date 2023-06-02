@@ -36,7 +36,7 @@
                                 <h2 class="text-center">Bienvenido</h2>
                             </div>
                         </div>
-                        <div class="row mt-5" style="background-color: D0EACA">
+                        <div class="row mt-5">
                             <div class="col-md-4 mt-4">
                                 <a href="#" class="btn btn-success badge-container  d-flex align-items-center justify-content-center mx-auto">
                                     <i class="fa-solid fa-basketball fa-5x icon-deportivo"></i>

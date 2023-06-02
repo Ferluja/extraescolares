@@ -27,7 +27,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 /*Rutas del administrador*/
 Route::get('/dashboard',[RutasProtegidasAdminController::class,'dashboard'])->name('dashboard');
-
+Route::view('/hoursRegister','admin.hoursRegister');
 /*Rutas de los estudiantes*/
 
 

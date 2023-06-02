@@ -12,10 +12,9 @@
 </head>
 <body>
     @yield('contenido')
-
-    
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('fontawesome/js/all.min.js')}}"></script>
     <script src="{{ asset('bootstrap/js/scaffold.js')}}"></script>
+    <script src="{{asset('bootstrap/js/hoursRegister,js')}}"></script>
 </body>
 </html>
