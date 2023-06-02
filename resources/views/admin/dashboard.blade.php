@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col">
                 @section('user')
-                    <img src="https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile" class="rounded-circle shadow-lg my-4" width="150" height="150">
+                    <img src="{{asset('img/yamfer.png')}}" alt="Profile" class="rounded-circle shadow-lg my-4" width="150" height="150">
                     <h2 class="fs-5 fw-light mb-0">Usuario</h2>
                     <small class="text-muted">{{@session('nombre_usuario')}}</small>
                 @endsection
@@ -26,7 +26,7 @@
                         <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-clock me-2"></i>Registrar horas</a>
                     </li>
                     <li class="mb-2 w-100">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
+                        <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
                     </li>
                 @endsection
                 @section('main')
@@ -36,7 +36,7 @@
                                 <h2 class="text-center">Bienvenido</h2>
                             </div>
                         </div>
-                        <div class="row mt-5" style="background-color: D0EACA">
+                        <div class="row mt-5">
                             <div class="col-md-4 mt-4">
                                 <a href="#" class="btn btn-success badge-container  d-flex align-items-center justify-content-center mx-auto">
                                     <i class="fa-solid fa-basketball fa-5x icon-deportivo"></i>
