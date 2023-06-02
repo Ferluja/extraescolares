@@ -23,7 +23,7 @@ Route::get('/nuevoAdmin',[LoginController::class,'nuevoAdmin'])->name('nuevoAdmi
 Route::post('/accesoLogin',[LoginController::class,'accesoLogin'])->name('accesoLogin');
 Route::view('/registro','admin.registro');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-
+Route::view('/hoursRegister','admin.hoursRegister');
 
 /*Rutas del administrador*/
 Route::get('/dashboard',[RutasProtegidasAdminController::class,'dashboard'])->name('dashboard');
