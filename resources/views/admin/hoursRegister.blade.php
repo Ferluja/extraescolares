@@ -91,16 +91,16 @@
                                                     </fieldset>  
                                                     <fieldset class="px-3 mb-3">
                                                         <div class="row">
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-4">
                                                                 <div class="form-floating mb-3">
                                                                     <input type="text" class="form-control rounded-pill border border-success" id="evento" name="evento" placeholder="Evento">
                                                                     <label for="horas" class="form-label"><i class="fas fa-pen-square"></i> Nombre del evento</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-7">
+                                                            <div class="col-md-8">
                                                                 <div class="form-floating mb-3">
-                                                                    <input type="file" class="form-control  border border-success" id="evidencia" name="evidencia" placeholder="Evidencia">
-                                                                    <label for="evidencia" class="form-label"><i class="fas fa-photo-video"></i>Evidencia</label>
+                                                                    <input class="form-control rounded-pill border border-success" type="file" id="formFile">
+                                                                    <label for="" class="form-label p-2"> <i class="fas fa-photo-video"></i> Agregar evidencia</label>
                                                                 </div>
                                                             </div>
                                                         </div>
