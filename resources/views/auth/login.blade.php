@@ -12,7 +12,7 @@
                         @csrf
                         @method('POST')
                         <div class="profile-container text-center pb-3">
-                            <img src="{{asset('img/itma2.png')}}" alt="profile"
+                            <img src="{{asset('img/magicCode.png')}}" alt="profile"
                              class=" profile rounded-circle shadow" width="241" height="241">
                         </div>
                         <div class="form-floating mb-3">
