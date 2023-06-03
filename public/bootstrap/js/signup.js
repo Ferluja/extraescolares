@@ -5,7 +5,8 @@ const birthday = document.querySelector('#birthday');
 const admission_day = document.querySelector('#admission_day');
 const career = document.querySelector('#career');
 const temp_career = document.querySelector('#temp_career');
-const photo_profile = document.querySelector('#photo_profile');
+const mooc = document.querySelector('#mooc');
+const taller = document.querySelector('#taller');
 
 const show_hide = () => {
     show_hide_password.checked ? [
@@ -17,12 +18,23 @@ const show_hide = () => {
     ];
 }
 
-const preview_profile = (evt) => {
+const preview_mooc = (evt) => {
     var file_input = evt.target;
     if (file_input.files && file_input.files[0]) {
         let reader = new FileReader();
         reader.onload = function(evt) {
-            let imagePreview = document.querySelector('#photo');
+            let imagePreview = document.querySelector('#mooc');
+            imagePreview.src = evt.target.result;
+        };
+        reader.readAsDataURL(file_input.files[0]);
+    }
+}
+const preview_taller = (evt) => {
+    var file_input = evt.target;
+    if (file_input.files && file_input.files[0]) {
+        let reader = new FileReader();
+        reader.onload = function(evt) {
+            let imagePreview = document.querySelector('#taller');
             imagePreview.src = evt.target.result;
         };
         reader.readAsDataURL(file_input.files[0]);
@@ -42,4 +54,5 @@ temp_career?.addEventListener('focus', () => {
     temp_career.classList.remove('form-control');
     temp_career.hidden = true;
 });
-photo_profile.addEventListener('change', preview_profile);
+mooc.addEventListener('change', preview_mooc);
+taller.addEventListener('change', preview_taller);

@@ -126,7 +126,10 @@
                                 <label class="form-check-label" for="show_hide_password" id="text_show_hide_password">Mostrar contraseña</label>
                             </div>
                         </fieldset>
-                        <button type="submit" class="btn btn-success w-100 rounded-pill"><i class="fa-solid fa-user-plus me-2"></i>Registrar</button>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success rounded-pill" type="submit"><i class="fa-solid fa-user-plus me-2"></i>Registrar</button>
+                            <a class="btn btn-primary rounded-pill" href="{{ route('dashboard') }}"><i class="fa-solid fa-rotate-left me-2"></i>Regresar</a>
+                        </div>
                     </form>
                 </div>
             </div>
