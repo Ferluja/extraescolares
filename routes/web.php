@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RutasProtegidasAdminController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,5 +36,8 @@ Route::post('/registro_post',[RutasProtegidasAdminController::class,'registro_po
 
 /*Rutas del servicio*/
 
+
+/*Ruta para generar el PDF*/
+Route::get('/pdf', [PDFController::class, 'generatePDF']);
 
 
