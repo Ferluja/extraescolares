@@ -1,4 +1,5 @@
 @extends('layout.scaffold')
+    <title>{{$titulo}}</title>
     <link rel="stylesheet" href={{asset('bootstrap/css/scaffold.css')}}>
     <link rel="stylesheet" href={{asset('bootstrap/css/hoursRegister.css')}}>
     <div class="container">
@@ -39,7 +40,7 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-md">
-                                <div class="card p-5 shadow border-0" style="width: 60rem; background-color: D0EACA">
+                                <div class="card p-5 shadow border-0" style="width: 60rem;">
                                     <div class="card-body">
                                         <div class="row g-3">
                                             <div class="col-md-9">
@@ -72,7 +73,7 @@
                                                         <div class="row">
                                                             <div class="col-md-8">
                                                                 <div class="form-floating mb-3">
-                                                                    <select class="form-select rounded-pill border border-success" placeholder="Carrera">
+                                                                    <select class="form-select rounded-pill border border-success" placeholder="Carrera" name="carrera">
                                                                         <option value="null">Elegir carrera</option>
                                                                         <option value="isc">Ingeniería en sistema computacionales</option>
                                                                         <option value="ii">Ingeniería industrial</option>
@@ -114,12 +115,25 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        
+                                                            <div class="col-md-8">
+                                                                <div class="form-floating mb-3">
+                                                                    <select class="form-select rounded-pill border border-success" placeholder="Carrera" name="carpeta">
+                                                                        <option value="0">Elegir carpeta</option>
+                                                                        <option value="isc">Ingeniería en sistema computacionales</option>
+                                                                        <option value="ii">Ingeniería industrial</option>
+                                                                        <option value="ige">Ingeniería en gestión empresarial</option>
+                                                                    </select>
+                                                                    <label for="carrera" class="form-label"><i class="fa-solid fa-graduation-cap me-2"></i>Carpeta</label>
+                                                                </div>
+                                                            
+                                                        
                                                     </fieldset> 
                                                 </form>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="d-flex justify-content-end align-items-end" style="height: 300px">
-                                                    <button class="btn btn-primary"><i class="fas fa-plus"></i> Generar archivo</button>
+                                                    <button class="btn btn-primary"><i class="fas fa-plus"></i>Guardar</button>
                                                 </div> 
                                             </div>
                                         </div>

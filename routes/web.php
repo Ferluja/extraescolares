@@ -29,6 +29,8 @@ Route::view('/hoursRegister','admin.hoursRegister');
 Route::get('/dashboard',[RutasProtegidasAdminController::class,'dashboard'])->name('dashboard');
 Route::get('/registro',[RutasProtegidasAdminController::class,'registro'])->name('registro');
 Route::post('/registro_post',[RutasProtegidasAdminController::class,'registro_post'])->name('registroPost');
+
+Route::get('/registrar_horas',[RutasProtegidasAdminController::class,'registrar_horas'])->name('registrarHoras');
 /*Rutas de los estudiantes*/
 
 

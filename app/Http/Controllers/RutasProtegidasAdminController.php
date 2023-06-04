@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CatCarpetas;
 use App\Models\CatCarreras;
 use App\Models\DatosEscolares;
 use App\Models\DatosUsuarios;
@@ -80,4 +81,16 @@ class RutasProtegidasAdminController extends Controller
         return redirect()->route('dashboard');
 
     }    
+    public function registrar_horas(){
+        $titulo = 'Registrar Horas';
+        $carreras = CatCarreras::all();
+
+        return view('admin.hoursRegister',compact('titulo','carreras'));
+    }
+    public function catCarpeta(){
+        $item = new CatCarpetas();
+        $item->nombre_carpeta = 'Horas-Enero-Julio-2023';
+        $item->save();
+        print_r($item);
+    }
 }
