@@ -136,8 +136,8 @@
                                                                 </div>
                                                             
                                                                 <div class="col-md-3">
-                                                                    <div class="d-flex justify-content-end align-items-end" style="height: 300px">
-                                                                        <button class="btn btn-primary" type="submit"><i class="fas fa-plus"></i>Guardar</button>
+                                                                    <div class="d-flex justify-content-end align-items-end">
+                                                                        <button class="btn btn-primary mt-2" type="submit"><i class="fas fa-plus"></i>Guardar</button>
                                                                     </div> 
                                                                 </div>    
                                                     </fieldset> 

@@ -32,7 +32,7 @@ Route::get('/registro',[RutasProtegidasAdminController::class,'registro'])->name
 Route::post('/registro_post',[RutasProtegidasAdminController::class,'registro_post'])->name('registroPost');
 Route::get('/registrar_horas',[RutasProtegidasAdminController::class,'registrar_horas'])->name('registrarHoras');
 Route::get('/registrar_horas_post',[RutasProtegidasAdminController::class,'registrar_horas_post'])->name('registrarHorasPost');
-
+Route::get('/add',[RutasProtegidasAdminController::class,'catCarpeta']);
 /*Rutas de los estudiantes*/
 
 
