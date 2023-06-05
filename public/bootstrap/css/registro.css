@@ -1,4 +1,46 @@
-img {
-    width: 100%;
-    height: auto;
+.profile-container {
+    margin-bottom: -60px;
+    .profile {
+        position: relative;
+        width: 241px;
+        height: 241px;
+        top: -60px;
+        .img {
+            width: inherit;
+            height: inherit;
+        }
+        .photo_profile_container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            top: -60px;
+            right: -190px;
+        }
+    }
+    
 }
+.badge-container {
+    width: 150px;
+    height: 150px;
+    left: 80px;
+    top: 50px;
+    .icon-deportivo{
+        margin-right: -0px;
+    }
+    .icon {
+        position: absolute; 
+        width: 40px;
+        height: 40px;
+        top: -70px !important;
+        right: -60px;
+        .i-check {
+            margin-left: -0px;
+            color: black;
+        }
+    }
+}
+.text-left {
+    text-align: left;
+}
+
+  

@@ -26,6 +26,7 @@ Route::view('/registro','admin.registro');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::view('/hoursRegister','admin.hoursRegister');
 Route::view('/credit','admin.credit');
+Route::view('/users','admin.users');
 
 /*Rutas del administrador*/
 Route::get('/dashboard',[RutasProtegidasAdminController::class,'dashboard'])->name('dashboard');

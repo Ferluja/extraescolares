@@ -17,5 +17,6 @@
     <script src="{{ asset('bootstrap/js/scaffold.js')}}"></script>
     <script src="{{asset('bootstrap/js/hoursRegister.js')}}"></script>
     <script src="{{asset('bootstrap/js/signup.js')}}"></script>
+    <script src={{asset('bootstrap/js/signup.js')}}></script>
 </body>
 </html>
