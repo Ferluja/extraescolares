@@ -16,7 +16,7 @@ class ValidaSelect implements ValidationRule
     {
         //
         if($value==0){
-            $fail('El campo carrera no debe estar vacío');
+            $fail('El campo :attribute no debe estar vacío');
         }
     }
 }

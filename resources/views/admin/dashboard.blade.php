@@ -20,7 +20,7 @@
                 @endsection
                 @section('menu')
                     <li class="mb-2 w-100 mt-3">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-layer-group me-2"></i>Mis creditos</a>
+                        <a href="{{route('dashboard')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-layer-group me-2"></i>Mis creditos</a>
                     </li>
                     <li class="mb-2 w-100">
                         <a href="{{route('registrarHoras')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-clock me-2"></i>Registrar horas</a>
@@ -30,6 +30,7 @@
                     </li>
                 @endsection
                 @section('main')
+                
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
