@@ -1,4 +1,5 @@
 @extends('layout.scaffold')
+    <title>{{$titulo}}</title>
     <link rel="stylesheet" href={{asset('bootstrap/css/scaffold.css')}}>
     <link rel="stylesheet" href={{asset('bootstrap/css/hoursRegister.css')}}>
     <div class="container">
@@ -11,13 +12,13 @@
                 @endsection
                 @section('menu')
                     <li class="mb-2 w-100 mt-3">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-layer-group me-2"></i>Mis creditos</a>
+                        <a href="{{route('dashboard')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-layer-group me-2"></i>Mis creditos</a>
                     </li>
                     <li class="mb-2 w-100">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-clock me-2"></i>Registrar horas</a>
+                        <a href="{{route('registrarHoras')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-clock me-2"></i>Registrar horas</a>
                     </li>
                     <li class="mb-2 w-100">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
+                        <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
                     </li>
                     <li class="mb-2 w-100">
                         <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
@@ -42,30 +43,32 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-md">
-                                <div class="card p-5 shadow border-0" style="width: 60rem; background-color: D0EACA">
+                                <div class="card p-5 shadow border-0" style="width: 60rem;">
                                     <div class="card-body">
                                         <div class="row g-3">
                                             <div class="col-md-9">
-                                                <form action="" method="post" enctype="multipart/form-data">
+                                                <x-show_errors_validate></x-show_errors_validate>
+                                                <form action="{{route('registrarHorasPost')}}" method="post" enctype="multipart/form-data">
                                                     @csrf
+                                                    @method('POST')
                                                     <fieldset class="px-3 mb-3">
                                                         <legend class="fs-5 border-bottom mb-4">Datos Generales</legend>
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-3">
-                                                                    <input type="text" class="form-control rounded-pill border border-success" id="name" name="name" placeholder="Nombre(s)">
+                                                                    <input type="text" class="form-control rounded-pill border border-success" id="nombre" name="nombre" placeholder="Nombre(s)" value="{{old('nombre')}}">
                                                                     <label for="name" class="form-label"><i class="fa-solid fa-user me-2"></i>Nombre(s)</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-3">
-                                                                    <input type="text" class="form-control rounded-pill border border-success" id="first_surname" name="first_surname" placeholder="Apellido paterno">
+                                                                    <input type="text" class="form-control rounded-pill border border-success" id="apellido_paterno" name="apellido_paterno" placeholder="Apellido paterno" value="{{old('apellido_paterno')}}">
                                                                     <label for="first_surname" class="form-label"><i class="fa-solid fa-user me-2"></i>Apellido paterno</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-3">
-                                                                    <input type="text" class="form-control rounded-pill border border-success" id="second_surname" name="second_surname" placeholder="Apellido materno">
+                                                                    <input type="text" class="form-control rounded-pill border border-success" id="apellido_materno" name="apellido_materno" placeholder="Apellido materno" value="{{old('apellido_materno')}}">
                                                                     <label for="second_surname" class="form-label"><i class="fa-solid fa-user me-2"></i>Apellido materno</label>
                                                                 </div>
                                                             </div>
@@ -75,18 +78,19 @@
                                                         <div class="row">
                                                             <div class="col-md-8">
                                                                 <div class="form-floating mb-3">
-                                                                    <select class="form-select rounded-pill border border-success" placeholder="Carrera">
-                                                                        <option value="null">Elegir carrera</option>
-                                                                        <option value="isc">Ingeniería en sistema computacionales</option>
-                                                                        <option value="ii">Ingeniería industrial</option>
-                                                                        <option value="ige">Ingeniería en gestión empresarial</option>
+                                                                    <select class="form-select rounded-pill border border-success" placeholder="Carrera" name="carrera" value="{{old('carrera')}}">
+                                                                        <option value="0">Elegir carrera</option>
+                                                                        @foreach ($carreras as $carrera)
+                                                                        <option value="{{$carrera->id}}">{{$carrera->nombre_carrera}}</option>    
+                                                                        @endforeach
+                                                                        
                                                                     </select>
                                                                     <label for="carrera" class="form-label"><i class="fa-solid fa-graduation-cap me-2"></i>Carrera</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-3">
-                                                                    <input type="text" class="form-control rounded-pill border border-success" id="control_number" name="control_number" placeholder="Número de control">
+                                                                    <input type="text" class="form-control rounded-pill border border-success" id="numero_control" name="numero_control" placeholder="Número de control" value="{{old('numero_control')}}">
                                                                     <label for="control_number" class="form-label"><i class="fa-solid fa-hashtag me-2"></i>Número de control</label>
                                                                 </div>
                                                             </div>
@@ -96,13 +100,13 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-3">
-                                                                    <input type="text" class="form-control rounded-pill border border-success" id="evento" name="evento" placeholder="Evento">
+                                                                    <input type="text" class="form-control rounded-pill border border-success" id="evento" name="evento" placeholder="Evento" value="{{old('evento')}}">
                                                                     <label for="horas" class="form-label"><i class="fas fa-pen-square"></i> Nombre del evento</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="form-floating mb-3">
-                                                                    <input class="form-control rounded-pill border border-success" type="file" id="formFile">
+                                                                    <input class="form-control rounded-pill border border-success" type="file" id="evidencia" name="evidencia" value="{{old('evidencia')}}">
                                                                     <label for="" class="form-label p-2"> <i class="fas fa-photo-video"></i> Agregar evidencia</label>
                                                                 </div>
                                                             </div>
@@ -112,18 +116,34 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-3">
-                                                                    <input type="text" class="form-control rounded-pill border border-success" id="horas" name="horas" placeholder="Horas">
+                                                                    <input type="text" class="form-control rounded-pill border border-success" id="horas" name="horas" placeholder="Horas" value="{{old('horas')}}">
                                                                     <label for="horas" class="form-label"><i class="fas fa-clock"></i> Horas</label>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        
+                                                            <div class="col-md-8">
+                                                                <div class="form-floating mb-3">
+                                                                    <select class="form-select rounded-pill border border-success" placeholder="Carrera" name="carpeta" value="{{old('carpeta')}}">
+                                                                        <option value="0" selected>Elegir carpeta</option>
+                                                                        @foreach ($carpetas as $carpeta)
+                                                                            <option value="{{$carpeta->id}}">{{$carpeta->nombre_carpeta}}</option>    
+                                                                        @endforeach
+                                                                        
+                                                                        
+                                                                    </select>
+                                                                    <label for="carrera" class="form-label"><i class="fa-solid fa-graduation-cap me-2"></i>Carpeta</label>
+                                                                </div>
+                                                            
+                                                                <div class="col-md-3">
+                                                                    <div class="d-flex justify-content-end align-items-end" style="height: 300px">
+                                                                        <button class="btn btn-primary" type="submit"><i class="fas fa-plus"></i>Guardar</button>
+                                                                    </div> 
+                                                                </div>    
                                                     </fieldset> 
+                                                    
                                                 </form>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="d-flex justify-content-end align-items-end" style="height: 300px">
-                                                    <button class="btn btn-primary"><i class="fas fa-plus"></i> Generar archivo</button>
-                                                </div> 
+                                                <x-flash></x-flash>
                                             </div>
                                         </div>
                                     </div>
@@ -132,9 +152,10 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col">
-                                <table class="table" style="background-color: D0EACA">
+                                <table class="table" style="border: 1ch">
                                     <thead>
                                         <tr>
+                                            <th hidden>Id</th>
                                             <th>Nombre</th>
                                             <th>Apellido paterno</th>
                                             <th>Apellido materno</th>
@@ -150,6 +171,15 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td hidden></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

@@ -73,6 +73,6 @@
   <p class="text-uppercase text-justify">Para que tenga valides este documento debe de tener firma y sello del jefe de departamento que proporciona el apoyo.</p>
   <p class="text-uppercase text-center font-weight-bold text-firma">ing. aquino segura roldan</p>
   <p class="text-uppercase text-center">jefe de departamento de actividades <br> extraescolares</p>
-  <p style="padding-top: 20px" class="text-center">_______________________________________</p>
+  <p style="padding-top: 10px" class="text-center">_______________________________________</p>
 </body>
 </html>

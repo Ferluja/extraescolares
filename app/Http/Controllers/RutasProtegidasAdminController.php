@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CatCarpetas;
 use App\Models\CatCarreras;
 use App\Models\DatosEscolares;
 use App\Models\DatosUsuarios;
@@ -80,4 +81,47 @@ class RutasProtegidasAdminController extends Controller
         return redirect()->route('dashboard');
 
     }    
+    public function registrar_horas(){
+        $titulo = 'Registrar Horas';
+        $carreras = CatCarreras::all();
+        $carpetas = CatCarpetas::all();
+
+        return view('admin.hoursRegister',compact('titulo','carreras','carpetas'));
+    }
+    public function registrar_horas_post(Request $request){
+        $request->validate([
+            'nombre' => 'required',
+            'apellido_paterno' => 'required',
+            'apellido_materno' => 'required',
+            'carrera' => [new ValidaSelect],
+            'numero_control' => 'required|numeric',
+            'evento' => 'required',
+            'evidencia' => 'required|mimes:pdf',
+            'horas' => 'required|numeric',
+            'carpeta' => [new ValidaSelect],
+        ],
+        [
+            'nombre.required' => 'El campo nombre esta vacío',
+            'apellido_paterno.required' => 'El campo apellido paterno esta vacío',
+            'apellido_materno.required' => 'El campo apellido materno esta vaćio',
+            'numero_control.required' => 'El campo numero de control esta vacío',
+            'numero_control.numeric' => 'El campo numero de control solo acepta numeros',
+            'evento.required' => 'El campo evento esta vacío',
+            'evidencia.required' => 'El campo evidencia esta vacío',
+            'evidencia.mimes' => 'Solo se aceptan archivos PDF en el campo evidencia',
+            'horas.required' => 'El campo de horas esta vacío',
+            'horas.numeric' => 'El campo horas solo acepta numeros',
+        ]);
+
+        return redirect()->route('registrarHoras');
+        
+    }
+    
+    public function catCarpeta(){
+        $item = new CatCarpetas();
+        $item->nombre_carpeta = 'Horas-Agosto-Diciembre-2023';
+        $item->save();
+        print_r($item);
+    }
+    
 }
