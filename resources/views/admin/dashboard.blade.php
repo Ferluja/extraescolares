@@ -16,7 +16,7 @@
                 @section('user')
                     <img src="{{asset('img/yamfer.png')}}" alt="Profile" class="rounded-circle shadow-lg my-4" width="150" height="150">
                     <h2 class="fs-5 fw-light mb-0">Usuario</h2>
-                    <small class="text-muted">{{@session('nombre_usuario')}}</small>
+                    <small class="text-muted fw-bold">{{@session('nombre_usuario')}}</small>
                 @endsection
                 @section('menu')
                     <li class="mb-2 w-100 mt-3">
@@ -29,7 +29,7 @@
                         <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
                     </li>
                     <li class="mb-2 w-100">
-                        <a href="# class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
+                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
                     </li>
                 @endsection
                 @section('main')
@@ -63,13 +63,6 @@
                                 </a>
                                 <div class="my-2">
                                     <h5 class="text-center">Credito Civico</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col mt-5">
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Agregar Carpeta</a>
                                 </div>
                             </div>
                         </div>

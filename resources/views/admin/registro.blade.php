@@ -25,9 +25,9 @@
                 @endsection
                 @section('main')
                     <div class="container-fluid">
-                        <div class="row justify-content-center">
-                            <div class="col-md-9">
-                                <div class="card p-3 shadow border-0">
+                        <div class="row justify-content-center" style="margin-left: 75px">
+                            <div class="col-md">
+                                <div class="card p-5 shadow border-0">
                                     <div class="card-body">
                                         <x-show_errors_validate></x-show_errors_validate>
                                         <br>
@@ -151,7 +151,7 @@
                                 </div>
                             </div>
                         </div>
-                </div>
+                    </div>
                 @endsection
             </div>
         </div>

@@ -173,31 +173,33 @@
     </div>
     <div class="row mt-4">
         <div class="col">
-            <table class="table" style="background-color: D0EACA">
-                <thead>
-                    <tr>
-                        <th>No.Control</th>
-                        <th>Nombre</th>
-                        <th>Apellido paterno</th>
-                        <th>Apellido materno</th>
-                        <th>Credito</th>
-                        <th>Carrera</th>
-                        <th>Mooc</th>
-                        <th>Taller</th>
-                        <th>Generar oficio</th>
-                        <th>Ubicación fisica</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table" style="background-color: D0EACA">
+                    <thead>
+                        <tr>
+                            <th>No.Control</th>
+                            <th>Nombre</th>
+                            <th>Apellido paterno</th>
+                            <th>Apellido materno</th>
+                            <th>Credito</th>
+                            <th>Carrera</th>
+                            <th>Mooc</th>
+                            <th>Taller</th>
+                            <th>Generar oficio</th>
+                            <th>Ubicación fisica</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
