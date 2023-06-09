@@ -120,48 +120,6 @@
                                                                     <label for="" class="form-label p-2"> <i class="fas fa-photo-video"></i> Agregar evidencia</label>
                                                                 </div>
                                                             </div>
-<<<<<<< HEAD
-                                                            <div class="col-md-8">
-                                                                <div class="form-floating mb-3">
-                                                                    <select class="form-select rounded-pill border border-success" placeholder="Credito" name="credito">
-                                                                        <option value="0" selected>Elegir credito</option>
-                                                                        @foreach ($creditos as $credito)
-                                                                            <option value="{{$credito->id}}">{{$credito->nombre_credito}}</option>    
-                                                                        @endforeach
-                                                                        
-                                                                    </select>
-                                                                    <label for="carrera" class="form-label"><i class="fas fa-file-alt me-2"></i>Credito</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-floating mb-3">
-                                                                    <select class="form-select rounded-pill border border-success" placeholder="Carrera" name="carpeta">
-                                                                        <option value="0" selected>Elegir carpeta</option>
-                                                                        @foreach ($carpetas as $carpeta)
-                                                                            <option value="{{$carpeta->id}}">{{$carpeta->nombre_carpeta}}</option>    
-                                                                        @endforeach
-                                                                    </select>
-                                                                    <label for="carrera" class="form-label"><i class="fas fa-folder me-2"></i>Carpeta</label>
-                                                                </div>
-                                                                
-                                                                <button class="btn btn-primary mt-2" type="submit"><i class="fas fa-plus"></i>Guardar</button>
-                                                            </div>     
-                                                            <div class="col">
-                                                                <div class="form-floating mb-3">
-                                                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                                                                        <input type="text" class="form-control rounded-pill border border-success" id="btn_carpeta" name="btn_carpeta">
-                                                                        <label for="name" class="form-label"><i class="fa-solid fa-user me-2"></i>Agregar Carpeta</label>
-                                                                        <a href="#" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Agregar Carpeta</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>  
-                                                        </div>
-                                                                
-                                                    </fieldset> 
-                                                    
-=======
                                                         </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
@@ -186,7 +144,6 @@
                                                                 <button class="btn btn-primary" type="submit"><i class="fas fa-plus me-2"></i>Guardar</button>
                                                             </div>   
                                                     </fieldset>
->>>>>>> 8c3d92d9898c36bf07634d49205f996472629a19
                                                 </form>
                                                 <x-flash></x-flash>
                                             </div>
@@ -197,41 +154,45 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col">
-                                <div class="table-responsive">
-                                    <table class="table" style="border: 1ch">
-                                        <thead>
-                                            <tr>
-                                                <th hidden>Id</th>
-                                                <th>Nombre</th>
-                                                <th>Apellido paterno</th>
-                                                <th>Apellido materno</th>
-                                                <th>Carrera</th>
-                                                <th>No.Control</th>
-                                                <th>Nombre del evento</th>
-                                                <th>Horas</th>
-                                                <th>Generar oficio</th>
-                                                <th>Ubicación fisica</th>
-                                                <th>Editar</th>
-                                                <th>Eliminar</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td hidden></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="card" style="width: 55rem;">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table" id="tabla-registro" style="border: 1ch">
+                                                <thead>
+                                                    <tr>
+                                                        <th hidden>Id</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido paterno</th>
+                                                        <th>Apellido materno</th>
+                                                        <th>Carrera</th>
+                                                        <th>No.Control</th>
+                                                        <th>Nombre del evento</th>
+                                                        <th>Horas</th>
+                                                        <th>Generar oficio</th>
+                                                        <th>Ubicación fisica</th>
+                                                        <th>Editar</th>
+                                                        <th>Eliminar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td hidden></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
