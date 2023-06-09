@@ -27,7 +27,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md">
-                              <table class="table">
+                              <table class="table" id="tabla-registro">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Nombre</th>
