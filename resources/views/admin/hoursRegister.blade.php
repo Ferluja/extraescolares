@@ -46,7 +46,7 @@
                                 <div class="card p-5 shadow border-0">
                                     <div class="card-body">
                                         <div class="row g-3">
-                                            <div class="col-md-9">
+                                            <div class="col-md">
                                                 <x-show_errors_validate></x-show_errors_validate>
                                                 <form action="{{route('registrarHorasPost')}}" method="post" enctype="multipart/form-data">
                                                     @csrf
@@ -98,28 +98,29 @@
                                                     </fieldset>  
                                                     <fieldset class="px-3 mb-3">
                                                         <div class="row">
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-6">
                                                                 <div class="form-floating mb-3">
                                                                     <input type="text" class="form-control rounded-pill border border-success" id="evento" name="evento" placeholder="Evento" value="{{old('evento')}}">
                                                                     <label for="horas" class="form-label"><i class="fas fa-pen-square"></i> Nombre del evento</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-8">
+                                                            <div class="col-md-6">
                                                                 <div class="form-floating mb-3">
-                                                                    <input class="form-control rounded-pill border border-success" type="file" id="evidencia" name="evidencia" value="{{old('evidencia')}}">
-                                                                    <label for="" class="form-label p-2"> <i class="fas fa-photo-video"></i> Agregar evidencia</label>
+                                                                    <input type="text" class="form-control rounded-pill border border-success" id="horas" name="horas" placeholder="Horas" value="{{old('horas')}}">
+                                                                    <label for="horas" class="form-label"><i class="fas fa-clock"></i> Horas</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </fieldset> 
                                                     <fieldset class="px-3 mb-3">
                                                         <div class="row">
-                                                            <div class="col-md-4">
+                                                            <div class="col-md">
                                                                 <div class="form-floating mb-3">
-                                                                    <input type="text" class="form-control rounded-pill border border-success" id="horas" name="horas" placeholder="Horas" value="{{old('horas')}}">
-                                                                    <label for="horas" class="form-label"><i class="fas fa-clock"></i> Horas</label>
+                                                                    <input class="form-control rounded-pill border border-success" type="file" id="evidencia" name="evidencia" value="{{old('evidencia')}}">
+                                                                    <label for="" class="form-label p-2"> <i class="fas fa-photo-video"></i> Agregar evidencia</label>
                                                                 </div>
                                                             </div>
+<<<<<<< HEAD
                                                             <div class="col-md-8">
                                                                 <div class="form-floating mb-3">
                                                                     <select class="form-select rounded-pill border border-success" placeholder="Credito" name="credito">
@@ -150,7 +151,7 @@
                                                             <div class="col">
                                                                 <div class="form-floating mb-3">
                                                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                                                                        <input type="text" class="form-control rounded-pill border border-success" id="nombre" name="nombre" placeholder="Nombre(s)" value="{{old('nombre')}}">
+                                                                        <input type="text" class="form-control rounded-pill border border-success" id="btn_carpeta" name="btn_carpeta">
                                                                         <label for="name" class="form-label"><i class="fa-solid fa-user me-2"></i>Agregar Carpeta</label>
                                                                         <a href="#" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Agregar Carpeta</a>
                                                                     </div>
@@ -160,6 +161,32 @@
                                                                 
                                                     </fieldset> 
                                                     
+=======
+                                                        </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-floating mb-3">
+                                                                        <select class="form-select rounded-pill border border-success" placeholder="Carrera" name="carpeta" value="{{old('carpeta')}}">
+                                                                            <option value="0" selected>Elegir carpeta</option>
+                                                                            @foreach ($carpetas as $carpeta)
+                                                                                <option value="{{$carpeta->id}}">{{$carpeta->nombre_carpeta}}</option>    
+                                                                            @endforeach
+                                                                        </select>
+                                                                        <label for="carrera" class="form-label"><i class="fa-solid fa-folder me-2"></i>Carpeta</label>
+                                                                    </div>
+                                                                </div> 
+                                                                <div class="col">
+                                                                    <div class="form-floating mb-3">
+                                                                        <input type="text" class="form-control rounded-pill border border-success" id="" name="carpeta" placeholder="Agregar Carpeta">
+                                                                        <label for="horas" class="form-label"><i class="fas fa-folder-plus me-2"></i>Agregar Carpeta</label>
+                                                                    </div>
+                                                                </div> 
+                                                            </div>
+                                                            <div class="d-grid gap-2 d-md-block  mt-4">
+                                                                <button class="btn btn-primary" type="submit"><i class="fas fa-plus me-2"></i>Guardar</button>
+                                                            </div>   
+                                                    </fieldset>
+>>>>>>> 8c3d92d9898c36bf07634d49205f996472629a19
                                                 </form>
                                                 <x-flash></x-flash>
                                             </div>
@@ -170,40 +197,42 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col">
-                                <table class="table" style="border: 1ch">
-                                    <thead>
-                                        <tr>
-                                            <th hidden>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Apellido paterno</th>
-                                            <th>Apellido materno</th>
-                                            <th>Carrera</th>
-                                            <th>No.Control</th>
-                                            <th>Nombre del evento</th>
-                                            <th>Horas</th>
-                                            <th>Generar oficio</th>
-                                            <th>Ubicación fisica</th>
-                                            <th>Editar</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td hidden></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table" style="border: 1ch">
+                                        <thead>
+                                            <tr>
+                                                <th hidden>Id</th>
+                                                <th>Nombre</th>
+                                                <th>Apellido paterno</th>
+                                                <th>Apellido materno</th>
+                                                <th>Carrera</th>
+                                                <th>No.Control</th>
+                                                <th>Nombre del evento</th>
+                                                <th>Horas</th>
+                                                <th>Generar oficio</th>
+                                                <th>Ubicación fisica</th>
+                                                <th>Editar</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td hidden></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
