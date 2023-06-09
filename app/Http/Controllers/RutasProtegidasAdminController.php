@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CatCarpetas;
 use App\Models\CatCarreras;
+use App\Models\CatCreditos;
 use App\Models\DatosEscolares;
 use App\Models\DatosUsuarios;
 use App\Models\User;
@@ -85,8 +86,9 @@ class RutasProtegidasAdminController extends Controller
         $titulo = 'Registrar Horas';
         $carreras = CatCarreras::all();
         $carpetas = CatCarpetas::all();
+        $creditos = CatCreditos::all();
 
-        return view('admin.hoursRegister',compact('titulo','carreras','carpetas'));
+        return view('admin.hoursRegister',compact('titulo','carreras','carpetas','creditos'));
     }
     public function registrar_horas_post(Request $request){
         $request->validate([
@@ -98,6 +100,7 @@ class RutasProtegidasAdminController extends Controller
             'evento' => 'required',
             'evidencia' => 'required|mimes:pdf',
             'horas' => 'required|numeric',
+            'credito'=> [new ValidaSelect],
             'carpeta' => [new ValidaSelect],
         ],
         [
@@ -112,16 +115,44 @@ class RutasProtegidasAdminController extends Controller
             'horas.required' => 'El campo de horas esta vacío',
             'horas.numeric' => 'El campo horas solo acepta numeros',
         ]);
-
+        
+        
+        switch ($_FILES['evidencia']['type']) {
+            case 'application/pdf':
+                $archivo = time()."pdf";
+                break;
+            
+        }
+        
+        copy($_FILES['evidencia']['tmp_name'],'archivos/'.$archivo);
+        
+        $request->session()->flash('css','success');
+        $request->session()->flash('mensaje','Se guardo la informacion exitosamente');
+        
         return redirect()->route('registrarHoras');
         
     }
     
     public function catCarpeta(){
         $item = new CatCarpetas();
+        $item->nombre_carpeta = 'Horas-Enero-Julio-2023';
+        $item->save();
+        $item = new CatCarpetas();
         $item->nombre_carpeta = 'Horas-Agosto-Diciembre-2023';
         $item->save();
-        print_r($item);
+        return redirect()->route('dashboard');
+    }
+    public function catCreditos(){
+        $item = new CatCreditos();
+        $item->nombre_credito = 'CIVICO';
+        $item->save();
+        $item = new CatCreditos();
+        $item->nombre_credito = 'DEPORTIVO';
+        $item->save();
+        $item = new CatCreditos();
+        $item->nombre_credito = 'CULTURAL';
+        $item->save();
+        return redirect()->route('dashboard');
     }
     
 }

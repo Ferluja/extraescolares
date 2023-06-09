@@ -31,8 +31,9 @@ Route::get('/dashboard',[RutasProtegidasAdminController::class,'dashboard'])->na
 Route::get('/registro',[RutasProtegidasAdminController::class,'registro'])->name('registro');
 Route::post('/registro_post',[RutasProtegidasAdminController::class,'registro_post'])->name('registroPost');
 Route::get('/registrar_horas',[RutasProtegidasAdminController::class,'registrar_horas'])->name('registrarHoras');
-Route::get('/registrar_horas_post',[RutasProtegidasAdminController::class,'registrar_horas_post'])->name('registrarHorasPost');
+Route::post('/registrar_horas_post',[RutasProtegidasAdminController::class,'registrar_horas_post'])->name('registrarHorasPost');
 Route::get('/add',[RutasProtegidasAdminController::class,'catCarpeta']);
+Route::get('/addc',[RutasProtegidasAdminController::class,'catCreditos']);
 /*Rutas de los estudiantes*/
 
 

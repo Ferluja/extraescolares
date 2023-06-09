@@ -18,14 +18,13 @@ return new class extends Migration
             $table->string('apellido_materno');
             $table->string('correo')->unique();
             $table->date('fecha_nacimiento');
-            $table->integer('telefono');
+            $table->unsignedBigInteger('telefono');
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_perfiles');
             $table->unsignedBigInteger('id_datos_escolares');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_perfiles')->references('id')->on('perfiles')->onDelete('cascade');
             $table->foreign('id_datos_escolares')->references('id')->on('datos_escolares')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
