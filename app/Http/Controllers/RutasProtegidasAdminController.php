@@ -133,14 +133,11 @@ class RutasProtegidasAdminController extends Controller
         
     }
     
-    public function catCarpeta(){
+    public function carpetas_post(Request $request){
         $item = new CatCarpetas();
-        $item->nombre_carpeta = 'Horas-Enero-Julio-2023';
+        $item->nombre_carpeta = $request->nombre_carpeta;
         $item->save();
-        $item = new CatCarpetas();
-        $item->nombre_carpeta = 'Horas-Agosto-Diciembre-2023';
-        $item->save();
-        return redirect()->route('dashboard');
+        return redirect()->route('registrarHoras');
     }
     public function catCreditos(){
         $item = new CatCreditos();
