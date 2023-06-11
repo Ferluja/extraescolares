@@ -151,6 +151,7 @@
                                                                 <label for="horas" class="form-label"><i
                                                                         class="fas fa-clock"></i> Horas</label>
                                                             </div>
+<<<<<<< HEAD
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -202,6 +203,8 @@
 
                                                             <button class="btn btn-primary mt-2" type="submit"><i
                                                                     class="fas fa-plus"></i>Guardar</button>
+=======
+>>>>>>> ace8edda82e77eda47644015d442ea47c22f827d
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-floating mb-3">
@@ -215,17 +218,28 @@
                                                                         Carpeta</a>
                                                                 </div>
                                                             </div>
+<<<<<<< HEAD
                                                         </div>
                                                     </div>
 
                                                 </fieldset>
                                             </form>
                                             <x-flash></x-flash>
+=======
+                                                            <div class="d-grid gap-2 d-md-block  mt-4">
+                                                                <button class="btn btn-primary" type="submit"><i class="fas fa-plus me-2"></i>Guardar</button>
+                                                            </div>   
+                                                    </fieldset>
+                                                </form>
+                                                <x-flash></x-flash>
+                                            </div>
+>>>>>>> ace8edda82e77eda47644015d442ea47c22f827d
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </div>
                     <div class="row mt-4">
                         <div class="col">
@@ -264,6 +278,50 @@
                                         </tr>
                                     </tbody>
                                 </table>
+=======
+                        <div class="row mt-4">
+                            <div class="col">
+                                <div class="card" style="width: 55rem;">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table" id="tabla-registro" style="border: 1ch">
+                                                <thead>
+                                                    <tr>
+                                                        <th hidden>Id</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido paterno</th>
+                                                        <th>Apellido materno</th>
+                                                        <th>Carrera</th>
+                                                        <th>No.Control</th>
+                                                        <th>Nombre del evento</th>
+                                                        <th>Horas</th>
+                                                        <th>Generar oficio</th>
+                                                        <th>Ubicación fisica</th>
+                                                        <th>Editar</th>
+                                                        <th>Eliminar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td hidden></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+>>>>>>> ace8edda82e77eda47644015d442ea47c22f827d
                             </div>
                         </div>
                     </div>

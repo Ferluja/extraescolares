@@ -55,15 +55,15 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col">
-                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 60rem">
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                             <button class="btn btn-success">Credito seleccionado</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card p-5 shadow border-0 mt-2" style="width: 60rem; background-color: D0EACA">
+                                <div class="card p-5 shadow border-0 mt-2" style="background-color: D0EACA">
                                     <div class="card-body">
                                         <h5>Sube tus evidencias o constancias en su area correspondiente.</h5>
-                                        <div class="row g-3 mt-4">
+                                        <div class="row mt-4">
                                             <div class="col-md-3">
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <div class="bg-success d-flex align-items-center justify-content-center"
@@ -78,11 +78,13 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <div class="bg-success d-flex align-items-center justify-content-center"
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="bg-success d-flex align-items-center justify-content-center"
                                                     style="width: 200px; height: 150px;">
                                                     <label for="taller" class="text-white" title="Subir foto"><i
                                                             class="fa-solid fa-puzzle-piece fa-5x"></i></label>
                                                     <input type="file" id="taller" name="taller" hidden>
+                                                </div>
                                                 </div>
                                                 <div class="text-center mt-2">
                                                     TALLER
@@ -91,7 +93,7 @@
                                             <div class="col-md-6">
                                                 <fieldset class="px-3 mb-3">
                                                     <div class="row">
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-5">
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
@@ -100,7 +102,7 @@
                                                                         class="fa-solid fa-user me-2"></i>Nombre(s)</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-7">
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
@@ -111,7 +113,7 @@
                                                                     paterno</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-8">
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
@@ -126,7 +128,7 @@
                                                 </fieldset>
                                                 <fieldset class="px-3 mb-3">
                                                     <div class="row">
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-5">
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
@@ -137,7 +139,7 @@
                                                                     control</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-8">
+                                                        <div class="col-md-7">
                                                             <div class="form-floating mb-3">
                                                                 <select
                                                                     class="form-select rounded-pill border border-success"
@@ -173,32 +175,45 @@
     </div>
     <div class="row mt-4">
         <div class="col">
-            <div class="table-responsive">
-                <table class="table" style="background-color: D0EACA">
-                    <thead>
-                        <tr>
-                            <th>No.Control</th>
-                            <th>Nombre</th>
-                            <th>Apellido paterno</th>
-                            <th>Apellido materno</th>
-                            <th>Credito</th>
-                            <th>Carrera</th>
-                            <th>Mooc</th>
-                            <th>Taller</th>
-                            <th>Generar oficio</th>
-                            <th>Ubicación fisica</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card" style="width: 55rem;">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table" id="tabla-registro"style="border: 1ch">
+                            <thead>
+                                <tr>
+                                    <th>No.Control</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido paterno</th>
+                                    <th>Apellido materno</th>
+                                    <th>Credito</th>
+                                    <th>Carrera</th>
+                                    <th>Mooc</th>
+                                    <th>Taller</th>
+                                    <th>Generar oficio</th>
+                                    <th>Ubicación fisica</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
