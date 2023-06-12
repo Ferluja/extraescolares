@@ -42,7 +42,7 @@
                         </div>
                         <div class="row mt-5">
                             <div class="col-md-4 mt-4">
-                                <a href="#" class="btn btn-success badge-container  d-flex align-items-center justify-content-center mx-auto">
+                                <a href="{{route('registrarCreditos', ['id'=>2])}}" class="btn btn-success badge-container  d-flex align-items-center justify-content-center mx-auto">
                                     <i class="fa-solid fa-basketball fa-5x icon-deportivo"></i>
                                 </a>
                                 <div class="my-2">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 mt-4">
-                                <a href="#" class="btn btn-success badge-container d-flex align-items-center justify-content-center mx-auto">
+                                <a href="{{ route('registrarCreditos', ['id'=>3]) }}" class="btn btn-success badge-container d-flex align-items-center justify-content-center mx-auto">
                                     <i class="fa-solid fa-book-open-reader fa-5x icon-deportivo"></i>
                                 </a>
                                 <div class="my-2">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 mt-4">
-                                <a href="#" class="btn btn-success badge-container d-flex align-items-center justify-content-center mx-auto">
+                                <a href="{{ route('registrarCreditos', ['id'=>1]) }}" class="btn btn-success badge-container d-flex align-items-center justify-content-center mx-auto">
                                     <i class="fa-solid fa-flag fa-5x icon-deportivo"></i>
                                 </a>
                                 <div class="my-2">

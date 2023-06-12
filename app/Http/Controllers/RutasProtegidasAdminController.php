@@ -7,9 +7,11 @@ use App\Models\CatCarreras;
 use App\Models\CatCreditos;
 use App\Models\DatosEscolares;
 use App\Models\DatosUsuarios;
+use App\Models\RegistroHoras;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\ValidaSelect;
+use Illuminate\Support\Facades\DB;
 
 class RutasProtegidasAdminController extends Controller
 {
@@ -87,8 +89,15 @@ class RutasProtegidasAdminController extends Controller
         $carreras = CatCarreras::all();
         $carpetas = CatCarpetas::all();
         $creditos = CatCreditos::all();
+        $registros = DB::table('registro_horas')
+        ->join('cat_carreras','id','=','registro_horas.id_carrera')
+        ->join('cat_creditos','id','=','registro_horas.id_credito')
+        ->join('cat_carpetas','id','=','registro_horas.id_carpeta')
+        ->select('nombre','apellido_paterno','apellido_materno','cat_carerras.nombre_carrera'
+        ,'numero_control','semestre','nombre_evento','path_evidencia','horas',
+        'cat_creditos.nombre_credito','cat_carpetas.nombre_carpeta')->get();
 
-        return view('admin.hoursRegister',compact('titulo','carreras','carpetas','creditos'));
+        return view('admin.hoursRegister',compact('titulo','carreras','carpetas','creditos','registros'));
     }
     public function registrar_horas_post(Request $request){
         $request->validate([
@@ -133,14 +142,15 @@ class RutasProtegidasAdminController extends Controller
         
     }
     
-    public function catCarpeta(){
+    public function carpetas_post(Request $request){
         $item = new CatCarpetas();
-        $item->nombre_carpeta = 'Horas-Enero-Julio-2023';
+        $item->nombre_carpeta = $request->nombre_carpeta;
         $item->save();
-        $item = new CatCarpetas();
-        $item->nombre_carpeta = 'Horas-Agosto-Diciembre-2023';
-        $item->save();
-        return redirect()->route('dashboard');
+        if($request->viewSelect == 1){
+        return redirect()->route('registrarHoras');
+        }else{
+            return redirect()->route('registrarCreditos',['id'=>$request->credito_id]);
+        }
     }
     public function catCreditos(){
         $item = new CatCreditos();
@@ -153,6 +163,14 @@ class RutasProtegidasAdminController extends Controller
         $item->nombre_credito = 'CULTURAL';
         $item->save();
         return redirect()->route('dashboard');
+    }
+    public function registrar_creditos($id){
+        $titulo = 'Registrar Creditos';
+        $carreras = CatCarreras::all();
+        $carpetas = CatCarpetas::all();
+        $credito_seleccionado = CatCreditos::where(['id'=>$id])->select('id','nombre_credito')->first();
+
+        return view('admin.credit',compact('titulo','carreras','credito_seleccionado','carpetas'));
     }
     
 }

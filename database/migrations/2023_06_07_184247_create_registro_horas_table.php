@@ -23,8 +23,10 @@ return new class extends Migration
             $table->string('path_evidencia');
             $table->unsignedBigInteger('horas');
             $table->unsignedBigInteger('id_credito');
+            $table->unsignedBigInteger('id_carpeta');
             $table->foreign('id_carrera')->references('id')->on('cat_carreras')->onDelete('cascade');
             $table->foreign('id_credito')->references('id')->on('cat_creditos')->onDelete('cascade');
+            $table->foreign('id_carpeta')->references('id')->on('cat_carpetas')->onDelete('cascade');
             $table->timestamps();
             
             
