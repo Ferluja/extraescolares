@@ -276,7 +276,7 @@
                                                         <td><a href="{{ route('generarPDF', ['id' => $registro->id]) }}"><i
                                                                     class="fas fa-file-alt me-2"></i></a></td>
                                                         <td>{{ $registro->nombre_carpeta }}</td>
-                                                        <td><a href="#" class="btn btn-warning">Editar</a></td>
+                                                        <td><a href="{{ route('editarCreditos', ['id'=>$registro->id]) }}" class="btn btn-warning">Editar</a></td>
                                                         <td><a href="#" class="btn btn-danger">Eliminar</a></td>
                                                     @endforeach
                                                 </tr>

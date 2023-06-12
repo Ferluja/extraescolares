@@ -21,7 +21,7 @@
                         <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
                     </li>
                     <li class="mb-2 w-100">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
+                        <a href="{{ route('listaUsuarios')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
                     </li>
                 @endsection
                 @section('main')
@@ -57,19 +57,21 @@
                                     <div class="row g-3">
                                         <div class="col-md">
                                             <x-show_errors_validate></x-show_errors_validate>
-                                            <form action="{{ route('registrarHorasPost') }}" method="post"
+                                            <form action="{{ route('editarCreditosPut') }}" method="post"
                                                 enctype="multipart/form-data">
                                                 @csrf
                                                 @method('POST')
                                                 <fieldset class="px-3 mb-3">
                                                     <legend class="fs-5 border-bottom mb-4">Datos Generales</legend>
                                                     <div class="row">
+                                                        @foreach ($creditos as $credito)
+                                                            
                                                         <div class="col-md-4">
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
                                                                     id="nombre" name="nombre" placeholder="Nombre(s)"
-                                                                    value="{{ old('nombre') }}">
+                                                                    value="{{$credito->nombre_credito}}">
                                                                 <label for="name" class="form-label"><i
                                                                         class="fa-solid fa-user me-2"></i>Nombre(s)</label>
                                                             </div>
@@ -80,7 +82,7 @@
                                                                     class="form-control rounded-pill border border-success"
                                                                     id="apellido_paterno" name="apellido_paterno"
                                                                     placeholder="Apellido paterno"
-                                                                    value="{{ old('apellido_paterno') }}">
+                                                                    value="{{$credito->apellido_paterno}}">
                                                                 <label for="first_surname" class="form-label"><i
                                                                         class="fa-solid fa-user me-2"></i>Apellido
                                                                     paterno</label>
@@ -92,7 +94,7 @@
                                                                     class="form-control rounded-pill border border-success"
                                                                     id="apellido_materno" name="apellido_materno"
                                                                     placeholder="Apellido materno"
-                                                                    value="{{ old('apellido_materno') }}">
+                                                                    value="{{$credito->apellido_materno}}">
                                                                 <label for="second_surname" class="form-label"><i
                                                                         class="fa-solid fa-user me-2"></i>Apellido
                                                                     materno</label>
@@ -107,7 +109,7 @@
                                                                 <select
                                                                     class="form-select rounded-pill border border-success"
                                                                     placeholder="Carrera" name="carrera">
-                                                                    <option value="0">Elegir carrera</option>
+                                                                    <option value="{{$credito->id_carrera}}">Elegir carrera</option>
                                                                     @foreach ($carreras as $carrera)
                                                                         <option value="{{ $carrera->id }}">
                                                                             {{ $carrera->nombre_carrera }}</option>
@@ -124,7 +126,7 @@
                                                                     class="form-control rounded-pill border border-success"
                                                                     id="numero_control" name="numero_control"
                                                                     placeholder="Número de control"
-                                                                    value="{{ old('numero_control') }}">
+                                                                    value="{{ $credito->numero_control}}">
                                                                 <label for="control_number" class="form-label"><i
                                                                         class="fa-solid fa-hashtag me-2"></i>Número de
                                                                     control</label>
@@ -139,10 +141,19 @@
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
                                                                     id="evento" name="evento" placeholder="Evento"
-                                                                    value="{{ old('evento') }}">
+                                                                    value="{{ $credito->nombre_evento }}">
                                                                 <label for="horas" class="form-label"><i
                                                                         class="fas fa-pen-square"></i> Nombre del
                                                                     evento</label>
+                                                            </div>
+                                                            <div class="form-floating mb-3 mt-4">
+                                                                <input type="number"
+                                                                    class="form-control rounded-pill border border-success"
+                                                                    id="semestre" name="semestre"
+                                                                    placeholder="Semestre"
+                                                                    value="{{ $credito->semestre }}">
+                                                                <label for="horas" class="form-label"><i
+                                                                        class="fas fa-pen-square"></i> Semestre</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -150,7 +161,7 @@
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
                                                                     id="horas" name="horas" placeholder="Horas"
-                                                                    value="{{ old('horas') }}">
+                                                                    value="{{ $credito->horas }}">
                                                                 <label for="horas" class="form-label"><i
                                                                         class="fas fa-clock"></i> Horas</label>
                                                             </div>
@@ -164,7 +175,7 @@
                                                                 <input
                                                                     class="form-control rounded-pill border border-success"
                                                                     type="file" id="evidencia" name="evidencia"
-                                                                    value="{{ old('evidencia') }}">
+                                                                    value="{{ $credito->path_evidencia }}">
                                                                 <label for="" class="form-label p-2"> <i
                                                                         class="fas fa-photo-video"></i> Agregar
                                                                     evidencia</label>
@@ -175,7 +186,7 @@
                                                                 <select
                                                                     class="form-select rounded-pill border border-success"
                                                                     placeholder="Credito" name="credito">
-                                                                    <option value="0" selected>Elegir credito</option>
+                                                                    <option value="{{$credito->id_credito}}" selected>Elegir credito</option>
                                                                     @foreach ($creditos as $credito)
                                                                         <option value="{{ $credito->id }}">
                                                                             {{ $credito->nombre_credito }}</option>
@@ -193,7 +204,7 @@
                                                                 <select
                                                                     class="form-select rounded-pill border border-success"
                                                                     placeholder="Carpeta" name="carpeta">
-                                                                    <option value="0" selected>Elegir carpeta</option>
+                                                                    <option value="{{$credito->id_carpeta}}" selected>Elegir carpeta</option>
                                                                     @foreach ($carpetas as $carpeta)
                                                                         <option value="{{ $carpeta->id }}">
                                                                             {{ $carpeta->nombre_carpeta }}</option>
@@ -202,7 +213,7 @@
                                                                 <label for="carrera" class="form-label"><i
                                                                         class="fas fa-folder me-2"></i>Carpeta</label>
                                                             </div>
-
+                                                            @endforeach    
                                                             <button class="btn btn-primary mt-2" type="submit"><i
                                                                     class="fas fa-plus"></i>Guardar</button>
                                                         </div>
@@ -218,7 +229,9 @@
                                                                         Carpeta</a>
                                                                 </div>
                                                             </div>   
+
                                                     </fieldset>
+                                                    
                                                 </form>
                                                 <x-flash></x-flash>
                                             </div>

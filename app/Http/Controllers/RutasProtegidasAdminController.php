@@ -251,6 +251,10 @@ class RutasProtegidasAdminController extends Controller
         $request->session()->flash('mensaje','Se guardo la infomación exitosamente');
         return redirect()->route('registrarCreditos',['id'=>$request->id_credito]);
     }
+    public function editar_horas($id){
+        $creditos = RegistroHoras::findOrFail($id);
+        return view('admin.hoursEdit',compact('creditos'));
+    }
     public function lista_usuarios(){
         $titulo = 'Lista Usuarios';
         $registros = DB::table('datos_usuarios')
@@ -259,6 +263,9 @@ class RutasProtegidasAdminController extends Controller
         
         return view('admin.users',compact('titulo','registros'));
     }
+
+    
+
     public function view_PDF($path){
         return Response::make(file_get_contents('archivos/'.$path), 200, [
             'content-type'=>'application/pdf',

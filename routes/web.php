@@ -32,6 +32,8 @@ Route::get('/registro',[RutasProtegidasAdminController::class,'registro'])->name
 Route::post('/registro_post',[RutasProtegidasAdminController::class,'registro_post'])->name('registroPost');
 Route::get('/registrar_horas',[RutasProtegidasAdminController::class,'registrar_horas'])->name('registrarHoras');
 Route::post('/registrar_horas_post',[RutasProtegidasAdminController::class,'registrar_horas_post'])->name('registrarHorasPost');
+Route::get('/editar_horas/{id}',[RutasProtegidasAdminController::class,'editar_creditos'])->name('editarCreditos');
+Route::put('/editar_horas',[RutasProtegidasAdminController::class,'editar_creditos_put'])->name('editarCreditosPut');
 Route::post('/carpetas_post',[RutasProtegidasAdminController::class,'carpetas_post'])->name('carpetasPost');
 Route::get('/creditos/{id}', [RutasProtegidasAdminController::class,'registrar_creditos'])->name('registrarCreditos');
 Route::post('/registrar_creditos_post',[RutasProtegidasAdminController::class,'registrar_creditos_post'])->name('registrarCreditosPost');

@@ -19,11 +19,11 @@ class PDFController extends Controller
             $grupo = 'IND';
         }
 
-        //$fechaEntera = time();
+        
         $fechaPrueba = $datos->created_at;
         $fecha = date('d-m-Y',strtotime($fechaPrueba));
         $mes = date("m", strtotime($fechaPrueba));
-        //print_r($mes);exit;
+        
         if($mes < 06){
             $periodo = 'Enero-Julio-'.date("Y",strtotime($fechaPrueba));
         }else{
