@@ -156,30 +156,36 @@
                                                                 <label for="carrera" class="form-label"><i
                                                                         class="fa-solid fa-graduation-cap me-2"></i>Carrera</label>
                                                             </div>
-                                                            <div class="form-floating mb-3">    
-                                                            <select
-                                                            class="form-select rounded-pill border border-success"
-                                                            placeholder="Carpeta" name="carpeta">
-                                                            <option value="0" selected>Elegir carpeta</option>
-                                                            @foreach ($carpetas as $carpeta)
-                                                                <option value="{{ $carpeta->id }}">
-                                                                    {{ $carpeta->nombre_carpeta }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        <label for="carrera" class="form-label"><i
-                                                                class="fas fa-folder me-2"></i>Carpeta</label>
-                                                            </div>
                                                         </div>
-
-                                                        <div class="d-flex justify-content-center align-items-center mt-4">
-                                                            <button class="btn btn-primary"><i
-                                                                    class="fa-solid fa-upload me-2"></i> Subir
-                                                                archivo</button>
-                                                                <a href="#" class="btn btn-primary"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#carpeta"><i
-                                                                    class="fa-solid fa-plus"></i> Agregar
-                                                                Carpeta</a>    
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-3">    
+                                                                <select
+                                                                class="form-select rounded-pill border border-success"
+                                                                placeholder="Carpeta" name="carpeta">
+                                                                <option value="0" selected>Elegir carpeta</option>
+                                                                @foreach ($carpetas as $carpeta)
+                                                                    <option value="{{ $carpeta->id }}">
+                                                                        {{ $carpeta->nombre_carpeta }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <label for="carrera" class="form-label"><i
+                                                                    class="fas fa-folder me-2"></i>Carpeta</label>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-6 mt-3">
+                                                            <a href="#" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#carpeta"><i
+                                                                        class="fa-solid fa-plus me-2"></i> Agregar
+                                                                    Carpeta</a> 
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="d-flex justify-content-center align-items-center mt-4">
+                                                                <button class="btn btn-primary"><i
+                                                                        class="fa-solid fa-upload me-2"></i> Subir
+                                                                        archivo
+                                                                </button>   
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </fieldset>
