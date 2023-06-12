@@ -90,10 +90,10 @@ class RutasProtegidasAdminController extends Controller
         $carpetas = CatCarpetas::all();
         $creditos = CatCreditos::all();
         $registros = DB::table('registro_horas')
-        ->join('cat_carreras','id','=','registro_horas.id_carrera')
-        ->join('cat_creditos','id','=','registro_horas.id_credito')
-        ->join('cat_carpetas','id','=','registro_horas.id_carpeta')
-        ->select('nombre','apellido_paterno','apellido_materno','cat_carerras.nombre_carrera'
+        ->join('cat_carreras','cat_carreras.id','=','registro_horas.id_carrera')
+        ->join('cat_creditos','cat_creditos.id','=','registro_horas.id_credito')
+        ->join('cat_carpetas','cat_carpetas.id','=','registro_horas.id_carpeta')
+        ->select('registro_horas.id','nombre','apellido_paterno','apellido_materno','cat_carreras.nombre_carrera'
         ,'numero_control','semestre','nombre_evento','path_evidencia','horas',
         'cat_creditos.nombre_credito','cat_carpetas.nombre_carpeta')->get();
 
@@ -134,6 +134,15 @@ class RutasProtegidasAdminController extends Controller
         }
         
         copy($_FILES['evidencia']['tmp_name'],'archivos/'.$archivo);
+        RegistroHoras::create([
+            'nombre'=>$request->nombre,
+            'apellido_paterno'=>$request->apellido_paterno,
+            'apellido_materno'=>$request->apellido_materno,
+            'id_carrera'=>$request->carrera,
+            'numero_control'=>$request->numero_control,
+            'nombre_evento'=>$request->evento,
+
+        ]);
         
         $request->session()->flash('css','success');
         $request->session()->flash('mensaje','Se guardo la informacion exitosamente');

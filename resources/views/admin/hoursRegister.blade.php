@@ -140,6 +140,14 @@
                                                                 <label for="horas" class="form-label"><i
                                                                         class="fas fa-pen-square"></i> Nombre del
                                                                     evento</label>
+                                                                    <div class="form-floating mb-3 mt-4">    
+                                                                    <input type="number"
+                                                                    class="form-control rounded-pill border border-success"
+                                                                    id="semestre" name="semestre" placeholder="Semestre"
+                                                                    value="{{ old('semestre') }}">
+                                                                <label for="horas" class="form-label"><i
+                                                                        class="fas fa-pen-square"></i> Semestre</label>    
+                                                                    </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -238,6 +246,7 @@
                                                         <th>Apellido materno</th>
                                                         <th>Carrera</th>
                                                         <th>No.Control</th>
+                                                        <th>Semestre</th>
                                                         <th>Nombre del evento</th>
                                                         <th>Evidencias</th>
                                                         <th>Horas</th>
@@ -262,7 +271,7 @@
                                                         <td>{{$registro->path_evidencia}}</td>
                                                         <td>{{$registro->horas}}</td>
                                                         <td>{{$registro->nombre_credito}}</td>
-                                                        <td>{{}}</td>
+                                                        <td><i class="fas fa-file-alt me-2"><a href="#"></a></i></td>
                                                         <td>{{$registro->nombre_carpeta}}</td>
                                                         <td><a href="#" class="btn-warning">Editar</a></td>
                                                         <td><a href="#" class="btn-danger">Eliminar</a></td>

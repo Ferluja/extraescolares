@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('registro_creditos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('apellido_peterno');
+            $table->string('apellido_paterno');
             $table->string('apellido_materno');
             $table->unsignedBigInteger('id_carrera');
             $table->unsignedBigInteger('semestre');
