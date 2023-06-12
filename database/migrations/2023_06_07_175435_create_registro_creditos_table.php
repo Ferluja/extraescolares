@@ -21,8 +21,10 @@ return new class extends Migration
             $table->unsignedBigInteger('id_credito');
             $table->string('path_mooc');
             $table->string('path_taller');
+            $table->unsignedBigInteger('id_carpeta');
             $table->foreign('id_carrera')->references('id')->on('cat_carreras')->onDelete('cascade');
             $table->foreign('id_credito')->references('id')->on('cat_creditos')->onDelete('cascade');
+            $table->foreign('id_carpeta')->references('id')->on('cat_carpetas')->onDelete('cascade');
             $table->timestamps();
 
         });

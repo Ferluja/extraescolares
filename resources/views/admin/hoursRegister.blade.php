@@ -151,7 +151,6 @@
                                                                 <label for="horas" class="form-label"><i
                                                                         class="fas fa-clock"></i> Horas</label>
                                                             </div>
-<<<<<<< HEAD
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -190,7 +189,7 @@
                                                             <div class="form-floating mb-3">
                                                                 <select
                                                                     class="form-select rounded-pill border border-success"
-                                                                    placeholder="Carrera" name="carpeta">
+                                                                    placeholder="Carpeta" name="carpeta">
                                                                     <option value="0" selected>Elegir carpeta</option>
                                                                     @foreach ($carpetas as $carpeta)
                                                                         <option value="{{ $carpeta->id }}">
@@ -203,8 +202,6 @@
 
                                                             <button class="btn btn-primary mt-2" type="submit"><i
                                                                     class="fas fa-plus"></i>Guardar</button>
-=======
->>>>>>> ace8edda82e77eda47644015d442ea47c22f827d
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-floating mb-3">
@@ -217,68 +214,16 @@
                                                                             class="fa-solid fa-plus"></i> Agregar
                                                                         Carpeta</a>
                                                                 </div>
-                                                            </div>
-<<<<<<< HEAD
-                                                        </div>
-                                                    </div>
-
-                                                </fieldset>
-                                            </form>
-                                            <x-flash></x-flash>
-=======
-                                                            <div class="d-grid gap-2 d-md-block  mt-4">
-                                                                <button class="btn btn-primary" type="submit"><i class="fas fa-plus me-2"></i>Guardar</button>
                                                             </div>   
                                                     </fieldset>
                                                 </form>
                                                 <x-flash></x-flash>
                                             </div>
->>>>>>> ace8edda82e77eda47644015d442ea47c22f827d
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col">
-                            <div class="table-responsive">
-                                <table class="table" style="border: 1ch">
-                                    <thead>
-                                        <tr>
-                                            <th hidden>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Apellido paterno</th>
-                                            <th>Apellido materno</th>
-                                            <th>Carrera</th>
-                                            <th>No.Control</th>
-                                            <th>Nombre del evento</th>
-                                            <th>Horas</th>
-                                            <th>Generar oficio</th>
-                                            <th>Ubicación fisica</th>
-                                            <th>Editar</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td hidden></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-=======
                         <div class="row mt-4">
                             <div class="col">
                                 <div class="card" style="width: 55rem;">
@@ -294,7 +239,9 @@
                                                         <th>Carrera</th>
                                                         <th>No.Control</th>
                                                         <th>Nombre del evento</th>
+                                                        <th>Evidencias</th>
                                                         <th>Horas</th>
+                                                        <th>Credito</th>
                                                         <th>Generar oficio</th>
                                                         <th>Ubicación fisica</th>
                                                         <th>Editar</th>
@@ -303,25 +250,29 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td hidden></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        @foreach ($registros as $registro)
+                                                        <td hidden>{{$registro->id}}</td>
+                                                        <td>{{$registro->nombre}}</td>
+                                                        <td>{{$registro->apellido_paterno}}</td>
+                                                        <td>{{$registro->apellido_materno}}</td>
+                                                        <td>{{$registro->nombre_carrera}}</td>
+                                                        <td>{{$registro->numero_control}}</td>
+                                                        <td>{{$registro->semestre}}</td>
+                                                        <td>{{$registro->nombre_evento}}</td>
+                                                        <td>{{$registro->path_evidencia}}</td>
+                                                        <td>{{$registro->horas}}</td>
+                                                        <td>{{$registro->nombre_credito}}</td>
+                                                        <td>{{}}</td>
+                                                        <td>{{$registro->nombre_carpeta}}</td>
+                                                        <td><a href="#" class="btn-warning">Editar</a></td>
+                                                        <td><a href="#" class="btn-danger">Eliminar</a></td>
+                                                        @endforeach
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
->>>>>>> ace8edda82e77eda47644015d442ea47c22f827d
                             </div>
                         </div>
                     </div>
@@ -338,12 +289,13 @@
                 <h5 class="modal-title" id="exampleModalLabel">Agregar Carpeta</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('carpetasPost')}}" method="post">
+            <form action="{{ route('carpetasPost', ['id'=>1]) }}" method="post">
                 @csrf
                 @method('POST')
                 <div class="modal-body">
                     <div class="col">
                         <div class="form-floating mb-3">
+                            <input type="number" name="viewSelect" value="1" hidden>
                             <input type="text" class="form-control rounded-pill border border-success"
                                 id="nombre_carpeta" name="nombre_carpeta" placeholder="Nombre De Carpeta">
                             <label for="first_surname" class="form-label"><i class="fas fa-folder me-2"></i>Nombre de

@@ -1,4 +1,5 @@
 @extends('layout.scaffold')
+<title>{{ $titulo }}</title>
 <link rel="stylesheet" href={{ asset('bootstrap/css/scaffold.css') }}>
 <link rel="stylesheet" href={{ asset('bootstrap/css/credit.css') }}>
 <link rel="stylesheet" href={{ asset('bootstrap/css/signup.css') }}>
@@ -13,19 +14,20 @@
             @endsection
             @section('menu')
                 <li class="mb-2 w-100 mt-3">
-                    <a href="{{route('dashboard')}}" class="btn btn-light rounded-pill text-start w-100"><i
+                    <a href="{{ route('dashboard') }}" class="btn btn-light rounded-pill text-start w-100"><i
                             class="fa-solid fa-layer-group me-2"></i>Mis creditos</a>
                 </li>
                 <li class="mb-2 w-100">
-                    <a href="{{route('registrarHoras')}}" class="btn btn-light rounded-pill text-start w-100"><i
+                    <a href="{{ route('registrarHoras') }}" class="btn btn-light rounded-pill text-start w-100"><i
                             class="fa-solid fa-clock me-2"></i>Registrar horas</a>
                 </li>
                 <li class="mb-2 w-100">
-                    <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i
+                    <a href="{{ route('registro') }}" class="btn btn-light rounded-pill text-start w-100"><i
                             class="fa-solid fa-user me-2"></i>Agregar usuario</a>
                 </li>
                 <li class="mb-2 w-100">
-                    <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
+                    <a href="#" class="btn btn-light rounded-pill text-start w-100"><i
+                            class="fa-solid fa-users me-2"></i>Lista usuarios</a>
                 </li>
             @endsection
             @section('main')
@@ -56,7 +58,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                            <button class="btn btn-success">Credito seleccionado</button>
+                                            <button class="btn btn-success">{{ $credito_seleccionado->nombre_credito }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -80,11 +82,11 @@
                                             <div class="col-md-3">
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <div class="bg-success d-flex align-items-center justify-content-center"
-                                                    style="width: 200px; height: 150px;">
-                                                    <label for="taller" class="text-white" title="Subir foto"><i
-                                                            class="fa-solid fa-puzzle-piece fa-5x"></i></label>
-                                                    <input type="file" id="taller" name="taller" hidden>
-                                                </div>
+                                                        style="width: 200px; height: 150px;">
+                                                        <label for="taller" class="text-white" title="Subir foto"><i
+                                                                class="fa-solid fa-puzzle-piece fa-5x"></i></label>
+                                                        <input type="file" id="taller" name="taller" hidden>
+                                                    </div>
                                                 </div>
                                                 <div class="text-center mt-2">
                                                     TALLER
@@ -143,22 +145,41 @@
                                                             <div class="form-floating mb-3">
                                                                 <select
                                                                     class="form-select rounded-pill border border-success"
-                                                                    placeholder="Carrera">
-                                                                    <option value="null">Elegir carrera</option>
-                                                                    <option value="isc">Ingeniería en sistema
-                                                                        computacionales</option>
-                                                                    <option value="ii">Ingeniería industrial</option>
-                                                                    <option value="ige">Ingeniería en gestión
-                                                                        empresarial</option>
+                                                                    placeholder="Carrera" name="carrera">
+                                                                    <option value="0">Elegir carrera</option>
+                                                                    @foreach ($carreras as $carrera)
+                                                                        <option value="{{ $carrera->id }}">
+                                                                            {{ $carrera->nombre_carrera }}</option>
+                                                                    @endforeach
+
                                                                 </select>
                                                                 <label for="carrera" class="form-label"><i
                                                                         class="fa-solid fa-graduation-cap me-2"></i>Carrera</label>
                                                             </div>
+                                                            <div class="form-floating mb-3">    
+                                                            <select
+                                                            class="form-select rounded-pill border border-success"
+                                                            placeholder="Carpeta" name="carpeta">
+                                                            <option value="0" selected>Elegir carpeta</option>
+                                                            @foreach ($carpetas as $carpeta)
+                                                                <option value="{{ $carpeta->id }}">
+                                                                    {{ $carpeta->nombre_carpeta }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <label for="carrera" class="form-label"><i
+                                                                class="fas fa-folder me-2"></i>Carpeta</label>
+                                                            </div>
                                                         </div>
+
                                                         <div class="d-flex justify-content-center align-items-center mt-4">
                                                             <button class="btn btn-primary"><i
                                                                     class="fa-solid fa-upload me-2"></i> Subir
                                                                 archivo</button>
+                                                                <a href="#" class="btn btn-primary"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#carpeta"><i
+                                                                    class="fa-solid fa-plus"></i> Agregar
+                                                                Carpeta</a>    
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -218,6 +239,43 @@
         </div>
     </div>
 @endsection
+
+<!-- Modal -->
+<div class="modal fade" id="carpeta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Carpeta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{route('carpetasPost')}}" method="post">
+                @csrf
+                @method('POST')
+                <div class="modal-body">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="number" name="viewSelect" value="2" hidden>
+                            <input type="number" name="credito_id" value="{{$credito_seleccionado->id}}" hidden>
+                            <input type="text" class="form-control rounded-pill border border-success"
+                                id="nombre_carpeta" name="nombre_carpeta" placeholder="Nombre De Carpeta">
+                            <label for="first_surname" class="form-label"><i class="fas fa-folder me-2"></i>Nombre de
+                                carpeta fisica</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
 </div>
+
 </div>
+
+</div>
+
 </div>
