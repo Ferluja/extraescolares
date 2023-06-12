@@ -106,6 +106,7 @@ class RutasProtegidasAdminController extends Controller
             'apellido_materno' => 'required',
             'carrera' => [new ValidaSelect],
             'numero_control' => 'required|numeric',
+            'semestre' => 'required|numeric',
             'evento' => 'required',
             'evidencia' => 'required|mimes:pdf',
             'horas' => 'required|numeric',
@@ -118,6 +119,8 @@ class RutasProtegidasAdminController extends Controller
             'apellido_materno.required' => 'El campo apellido materno esta vaćio',
             'numero_control.required' => 'El campo numero de control esta vacío',
             'numero_control.numeric' => 'El campo numero de control solo acepta numeros',
+            'semestre.required' => 'El campo semestre esta vacío',
+            'semestre.numeric' => 'El campo semestre solo acepta numeros',
             'evento.required' => 'El campo evento esta vacío',
             'evidencia.required' => 'El campo evidencia esta vacío',
             'evidencia.mimes' => 'Solo se aceptan archivos PDF en el campo evidencia',
@@ -140,8 +143,12 @@ class RutasProtegidasAdminController extends Controller
             'apellido_materno'=>$request->apellido_materno,
             'id_carrera'=>$request->carrera,
             'numero_control'=>$request->numero_control,
+            'semestre'=>$request->semestre,
             'nombre_evento'=>$request->evento,
-
+            'path_evidencia'=>'archivos/'.$archivo,
+            'horas'=>$request->horas,
+            'id_credito'=>$request->credito,
+            'id_carpeta'=>$request->carpeta
         ]);
         
         $request->session()->flash('css','success');

@@ -1,47 +1,4 @@
 @extends('layout.scaffold')
-<<<<<<< HEAD
-    <title>{{$titulo}}</title>
-    <link rel="stylesheet" href={{asset('bootstrap/css/scaffold.css')}}>
-    <link rel="stylesheet" href={{asset('bootstrap/css/hoursRegister.css')}}>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                @section('user')
-                    <img src="https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile" class="rounded-circle shadow-lg my-4" width="150" height="150">
-                    <h2 class="fs-5 fw-light mb-0" style="color: black">Usuario</h2>
-                    <small class="text fw-bold" style="color: black">{{@session('nombre_usuario')}}</small>
-                @endsection
-                @section('menu')
-                    <li class="mb-2 w-100 mt-3">
-                        <a href="{{route('dashboard')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-layer-group me-2"></i>Mis creditos</a>
-                    </li>
-                    <li class="mb-2 w-100">
-                        <a href="{{route('registrarHoras')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-clock me-2"></i>Registrar horas</a>
-                    </li>
-                    <li class="mb-2 w-100">
-                        <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
-                    </li>
-                    <li class="mb-2 w-100">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
-                    </li>
-                @endsection
-                @section('main')
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-3 mt-4">
-                                <a href="#" class="btn btn-success badge-container  d-flex align-items-center justify-content-center mx-auto">
-                                    <i class="fas fa-clock fa-5x icon-deportivo"></i>
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <h2 class="text-center">Registrar horas</h2>
-                                <hr>
-                                <h5>Registra la participación de tus actividades o eventos</h5>
-                                <li>Eventos en el que participaste.</li>
-                                <li>Evidencias o constancia.</li>
-                                <li>Todo en formato PDF.</li>
-                            </div>
-=======
 <title>{{ $titulo }}</title>
 <link rel="stylesheet" href={{ asset('bootstrap/css/scaffold.css') }}>
 <link rel="stylesheet" href={{ asset('bootstrap/css/hoursRegister.css') }}>
@@ -80,7 +37,6 @@
                                 class="btn btn-success badge-container  d-flex align-items-center justify-content-center mx-auto">
                                 <i class="fas fa-clock fa-5x icon-deportivo"></i>
                             </a>
->>>>>>> 8d6e5fea9ab6530360d7317d6be22c4208e457eb
                         </div>
                         <div class="col-md-9">
                             <h2 class="text-center">Registrar horas</h2>
@@ -312,13 +268,14 @@
                                                         <td>{{$registro->numero_control}}</td>
                                                         <td>{{$registro->semestre}}</td>
                                                         <td>{{$registro->nombre_evento}}</td>
-                                                        <td>{{$registro->path_evidencia}}</td>
+                                                        <td><a href="#"><i class="fas fa-eye"></i></a></td>
                                                         <td>{{$registro->horas}}</td>
                                                         <td>{{$registro->nombre_credito}}</td>
-                                                        <td><i class="fas fa-file-alt me-2"><a href="#"></a></i></td>
+                                                        <td><a href="#"><i class="fas fa-file-alt me-2"></i></a></td>
                                                         <td>{{$registro->nombre_carpeta}}</td>
-                                                        <td><a href="#" class="btn-warning">Editar</a></td>
-                                                        <td><a href="#" class="btn-danger">Eliminar</a></td>
+                                                        <td><a href="#" class="btn btn-warning">Editar</a></td>
+                                                        <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                                                        
                                                         @endforeach
                                                     </tr>
                                                 </tbody>
