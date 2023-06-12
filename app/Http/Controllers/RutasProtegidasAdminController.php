@@ -147,7 +147,7 @@ class RutasProtegidasAdminController extends Controller
             'numero_control'=>$request->numero_control,
             'semestre'=>$request->semestre,
             'nombre_evento'=>$request->evento,
-            'path_evidencia'=>'archivos/'.$archivo,
+            'path_evidencia'=>$archivo,
             'horas'=>$request->horas,
             'id_credito'=>$request->credito,
             'id_carpeta'=>$request->carpeta

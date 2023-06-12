@@ -44,7 +44,7 @@ Route::get('/addc',[RutasProtegidasAdminController::class,'catCreditos']);
 
 
 /*Ruta para generar el PDF*/
-Route::get('/pdf', [PDFController::class, 'generatePDF']);
+Route::get('/pdf/{id}', [PDFController::class, 'generatePDF'])->name('generarPDF');
 Route::get('/viewPDF/{path}',[RutasProtegidasAdminController::class,'view_PDF'])->name('viewPDF');
 
 
