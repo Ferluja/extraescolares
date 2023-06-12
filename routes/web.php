@@ -24,7 +24,7 @@ Route::get('/nuevoAdmin',[LoginController::class,'nuevoAdmin'])->name('nuevoAdmi
 Route::post('/accesoLogin',[LoginController::class,'accesoLogin'])->name('accesoLogin');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::view('/credit','admin.credit');
-Route::view('/users','admin.users');
+
 
 /*Rutas del administrador*/
 Route::get('/dashboard',[RutasProtegidasAdminController::class,'dashboard'])->name('dashboard');
@@ -34,6 +34,8 @@ Route::get('/registrar_horas',[RutasProtegidasAdminController::class,'registrar_
 Route::post('/registrar_horas_post',[RutasProtegidasAdminController::class,'registrar_horas_post'])->name('registrarHorasPost');
 Route::post('/carpetas_post',[RutasProtegidasAdminController::class,'carpetas_post'])->name('carpetasPost');
 Route::get('/creditos/{id}', [RutasProtegidasAdminController::class,'registrar_creditos'])->name('registrarCreditos');
+Route::post('/registrar_creditos_post',[RutasProtegidasAdminController::class,'registrar_creditos_post'])->name('registrarCreditosPost');
+Route::get('/lista_usuarios',[RutasProtegidasAdminController::class,'lista_usuarios'])->name('listaUsuarios');
 Route::get('/addc',[RutasProtegidasAdminController::class,'catCreditos']);
 /*Rutas de los estudiantes*/
 
@@ -43,5 +45,6 @@ Route::get('/addc',[RutasProtegidasAdminController::class,'catCreditos']);
 
 /*Ruta para generar el PDF*/
 Route::get('/pdf', [PDFController::class, 'generatePDF']);
+Route::get('/viewPDF/{path}',[RutasProtegidasAdminController::class,'view_PDF'])->name('viewPDF');
 
 

@@ -7,12 +7,14 @@ use App\Models\CatCarreras;
 use App\Models\CatCreditos;
 use App\Models\DatosEscolares;
 use App\Models\DatosUsuarios;
+use App\Models\RegistroCreditos;
 use App\Models\RegistroHoras;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\ValidaSelect;
 use Illuminate\Support\Facades\DB;
-
+use File;
+use Response;
 class RutasProtegidasAdminController extends Controller
 {
     public function __construct(){
@@ -131,7 +133,7 @@ class RutasProtegidasAdminController extends Controller
         
         switch ($_FILES['evidencia']['type']) {
             case 'application/pdf':
-                $archivo = time()."pdf";
+                $archivo = time().".pdf";
                 break;
             
         }
@@ -185,8 +187,82 @@ class RutasProtegidasAdminController extends Controller
         $carreras = CatCarreras::all();
         $carpetas = CatCarpetas::all();
         $credito_seleccionado = CatCreditos::where(['id'=>$id])->select('id','nombre_credito')->first();
+        $registros = DB::table('registro_creditos')
+        ->join('cat_carreras','cat_carreras.id','=','registro_creditos.id_carrera')
+        ->join('cat_creditos','cat_creditos.id','=','registro_creditos.id_credito')
+        ->join('cat_carpetas','cat_carpetas.id','=','registro_creditos.id_carpeta')
+        ->select('registro_creditos.id','nombre','apellido_paterno','apellido_materno','cat_carreras.nombre_carrera'
+        ,'numero_control','path_mooc','path_taller','cat_creditos.nombre_credito','cat_carpetas.nombre_carpeta')->get();
 
-        return view('admin.credit',compact('titulo','carreras','credito_seleccionado','carpetas'));
+        return view('admin.credit',compact('titulo','carreras','credito_seleccionado','carpetas','registros'));
+    }
+    public function registrar_creditos_post(Request $request){
+        $request->validate([
+            'mooc' => 'required|mimes:pdf',
+            'taller' => 'required|mimes:pdf',
+            'nombre' => 'required',
+            'apellido_paterno' => 'required',
+            'apellido_materno' => 'required',
+            'numero_control' => 'required|numeric',
+            'carrera' => [new ValidaSelect],
+            'carpeta' => [new ValidaSelect]
+
+        ],
+        [
+            'mooc.required' => 'El campo mooc esta vacío',
+            'mooc.mimes' => 'El campo mooc solo acepta formato PDF',
+            'taller.required' => 'El campo taller esta vacío',
+            'taller.mimes' => 'El campo taller solo acepta PDF',
+            'nombre.required' => 'El campo nombre esta vacío',
+            'apellido_paterno.required' => 'El campo apellido paterno esta vacío',
+            'apellido_materno.required' => 'El campo apellido materno esta vacío',
+            'numero_control.required' => 'El campo numero de control esta vacío',
+            'numero_control.numeric' => 'El campo numero de control solo acepta numeros',
+             
+        ]);
+        switch ($_FILES['mooc']['type']) {
+            case 'application/pdf':
+                $archivo_mooc = time().".pdf";
+                break;
+            
+        }
+        switch ($_FILES['taller']['type']) {
+            case 'application/pdf':
+                $archivo_taller = time().".pdf";
+                break;
+            
+        }
+        
+        copy($_FILES['mooc']['tmp_name'],'archivos/'.$archivo_mooc);
+        copy($_FILES['taller']['tmp_name'],'archivos/'.$archivo_taller);
+        RegistroCreditos::create([
+            'nombre' => $request->nombre,
+            'apellido_paterno' => $request->apellido_paterno,
+            'apellido_materno' => $request->apellido_materno,
+            'numero_control' =>$request->numero_control,
+            'id_carrera' => $request->carrera,
+            'id_credito' => $request->id_credito,
+            'path_mooc' => $archivo_mooc,
+            'path_taller' => $archivo_taller,
+            'id_carpeta' => $request->carpeta
+
+        ]);
+        $request->session()->flash('css','success');
+        $request->session()->flash('mensaje','Se guardo la infomación exitosamente');
+        return redirect()->route('registrarCreditos',['id'=>$request->id_credito]);
+    }
+    public function lista_usuarios(){
+        $titulo = 'Lista Usuarios';
+        $registros = DB::table('datos_usuarios')
+        ->join('users','users.id','=','datos_usuarios.id_user')
+        ->select('users.email','datos_usuarios.nombre','datos_usuarios.correo')->get();
+        
+        return view('admin.users',compact('titulo','registros'));
+    }
+    public function view_PDF($path){
+        return Response::make(file_get_contents('archivos/'.$path), 200, [
+            'content-type'=>'application/pdf',
+        ]);
     }
     
 }

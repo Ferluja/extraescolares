@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
             $table->unsignedBigInteger('id_carrera');
-            $table->unsignedBigInteger('semestre');
+            $table->unsignedBigInteger('numero_control');
             $table->unsignedBigInteger('id_credito');
             $table->string('path_mooc');
             $table->string('path_taller');

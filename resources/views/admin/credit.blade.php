@@ -26,7 +26,7 @@
                             class="fa-solid fa-user me-2"></i>Agregar usuario</a>
                 </li>
                 <li class="mb-2 w-100">
-                    <a href="#" class="btn btn-light rounded-pill text-start w-100"><i
+                    <a href="{{route('listaUsuarios')}}" class="btn btn-light rounded-pill text-start w-100"><i
                             class="fa-solid fa-users me-2"></i>Lista usuarios</a>
                 </li>
             @endsection
@@ -53,14 +53,19 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-md">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <x-flash></x-flash>
+                            <x-show_errors_validate></x-show_errors_validate>
+                            <form action="{{route('registrarCreditosPost')}}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                @method('POST')
                                 <div class="row">
                                     <div class="col">
                                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                             <button class="btn btn-success">{{ $credito_seleccionado->nombre_credito }}</button>
+                                            <input type="number" name="id_credito" value="{{$credito_seleccionado->id}}" hidden>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="card p-5 shadow border-0 mt-2" style="background-color: D0EACA">
                                     <div class="card-body">
@@ -99,7 +104,7 @@
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
-                                                                    id="name" name="name" placeholder="Nombre(s)">
+                                                                    id="nombre" name="nombre" placeholder="Nombre(s)">
                                                                 <label for="name" class="form-label"><i
                                                                         class="fa-solid fa-user me-2"></i>Nombre(s)</label>
                                                             </div>
@@ -108,7 +113,7 @@
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
-                                                                    id="first_surname" name="first_surname"
+                                                                    id="apellido_paterno" name="apellido_paterno"
                                                                     placeholder="Apellido paterno">
                                                                 <label for="first_surname" class="form-label"><i
                                                                         class="fa-solid fa-user me-2"></i>Apellido
@@ -119,7 +124,7 @@
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
-                                                                    id="second_surname" name="second_surname"
+                                                                    id="apellido_materno" name="apellido_materno"
                                                                     placeholder="Apellido materno">
                                                                 <label for="second_surname" class="form-label"><i
                                                                         class="fa-solid fa-user me-2"></i>Apellido
@@ -134,7 +139,7 @@
                                                             <div class="form-floating mb-3">
                                                                 <input type="text"
                                                                     class="form-control rounded-pill border border-success"
-                                                                    id="control_number" name="control_number"
+                                                                    id="numero_control" name="numero_control"
                                                                     placeholder="Número de control">
                                                                 <label for="control_number" class="form-label"><i
                                                                         class="fa-solid fa-hashtag me-2"></i>Número de
@@ -208,6 +213,7 @@
                         <table class="table" id="tabla-registro"style="border: 1ch">
                             <thead>
                                 <tr>
+                                    <th hidden>Id</th>
                                     <th>No.Control</th>
                                     <th>Nombre</th>
                                     <th>Apellido paterno</th>
@@ -216,7 +222,6 @@
                                     <th>Carrera</th>
                                     <th>Mooc</th>
                                     <th>Taller</th>
-                                    <th>Generar oficio</th>
                                     <th>Ubicación fisica</th>
                                     <th>Editar</th>
                                     <th>Eliminar</th>
@@ -224,18 +229,22 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    @foreach ($registros as $registro)
+                                        
+                                    
+                                    <td hidden>{{$registro->id}}</td>
+                                    <td>{{$registro->numero_control}}</td>
+                                    <td>{{$registro->nombre}}</td>
+                                    <td>{{$registro->apellido_paterno}}</td>
+                                    <td>{{$registro->apellido_materno}}</td>
+                                    <td>{{$registro->nombre_credito}}</td>
+                                    <td>{{$registro->nombre_carrera}}</td>
+                                    <td><a href="{{ route('viewPDF', ['path'=>$registro->path_mooc]) }}" target="_blank"><i class="fas fa-eye"></i></a></td>
+                                    <td><a href="{{ route('viewPDF', ['path'=>$registro->path_taller]) }}" target="_blank"><i class="fas fa-eye"></i></a></td>
+                                    <td>{{$registro->nombre_carpeta}}</td>
+                                    <td><a href="#" class="btn btn-warning">Editar</a></td>
+                                    <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                                    @endforeach
                                 </tr>
                             </tbody>
                         </table>
