@@ -34,7 +34,9 @@ Route::get('/registrar_horas',[RutasProtegidasAdminController::class,'registrar_
 Route::post('/registrar_horas_post',[RutasProtegidasAdminController::class,'registrar_horas_post'])->name('registrarHorasPost');
 Route::post('/carpetas_post',[RutasProtegidasAdminController::class,'carpetas_post'])->name('carpetasPost');
 Route::get('/creditos/{id}', [RutasProtegidasAdminController::class,'registrar_creditos'])->name('registrarCreditos');
+Route::post('/registrar_creditos_post',[RutasProtegidasAdminController::class,'registrar_creditos_post'])->name('registrarCreditosPost');
 Route::get('/addc',[RutasProtegidasAdminController::class,'catCreditos']);
+
 /*Rutas de los estudiantes*/
 
 
