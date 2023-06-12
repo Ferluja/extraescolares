@@ -20,7 +20,7 @@
                         <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
                     </li>
                     <li class="mb-2 w-100">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
+                        <a href="{{route('listaUsuarios')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
                     </li>
                 @endsection
                 @section('main')

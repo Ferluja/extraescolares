@@ -24,7 +24,7 @@ Route::get('/nuevoAdmin',[LoginController::class,'nuevoAdmin'])->name('nuevoAdmi
 Route::post('/accesoLogin',[LoginController::class,'accesoLogin'])->name('accesoLogin');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::view('/credit','admin.credit');
-Route::view('/users','admin.users');
+
 
 /*Rutas del administrador*/
 Route::get('/dashboard',[RutasProtegidasAdminController::class,'dashboard'])->name('dashboard');
@@ -32,9 +32,10 @@ Route::get('/registro',[RutasProtegidasAdminController::class,'registro'])->name
 Route::post('/registro_post',[RutasProtegidasAdminController::class,'registro_post'])->name('registroPost');
 Route::get('/registrar_horas',[RutasProtegidasAdminController::class,'registrar_horas'])->name('registrarHoras');
 Route::post('/registrar_horas_post',[RutasProtegidasAdminController::class,'registrar_horas_post'])->name('registrarHorasPost');
+Route::get('/editar_horas/{id}',[RutasProtegidasAdminController::class,'editar_creditos'])->name('editarCreditos');
+Route::put('/editar_horas',[RutasProtegidasAdminController::class,'editar_creditos_put'])->name('editarCreditosPut');
 Route::post('/carpetas_post',[RutasProtegidasAdminController::class,'carpetas_post'])->name('carpetasPost');
 Route::get('/creditos/{id}', [RutasProtegidasAdminController::class,'registrar_creditos'])->name('registrarCreditos');
-Route::post('/registrar_creditos_post',[RutasProtegidasAdminController::class,'registrar_creditos_post'])->name('registrarCreditosPost');
 Route::get('/addc',[RutasProtegidasAdminController::class,'catCreditos']);
 
 /*Rutas de los estudiantes*/
@@ -44,6 +45,7 @@ Route::get('/addc',[RutasProtegidasAdminController::class,'catCreditos']);
 
 
 /*Ruta para generar el PDF*/
-Route::get('/pdf', [PDFController::class, 'generatePDF']);
+Route::get('/pdf/{id}', [PDFController::class, 'generatePDF'])->name('generarPDF');
+Route::get('/viewPDF/{path}',[RutasProtegidasAdminController::class,'view_PDF'])->name('viewPDF');
 
 

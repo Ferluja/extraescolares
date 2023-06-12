@@ -1,6 +1,7 @@
 @extends('layout.scaffold')
     <link rel="stylesheet" href={{asset('bootstrap/css/scaffold.css')}}>
     <link rel="stylesheet" href={{asset('bootstrap/css/registro.css')}}>
+    <title>{{$titulo}}</title>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -20,7 +21,7 @@
                         <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
                     </li>
                     <li class="mb-2 w-100">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
+                        <a href="{{route('listaUsuarios')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
                     </li>
                 @endsection
                 @section('main')
@@ -40,12 +41,15 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        @foreach ($registros as $registro)
+                                            
+                                        <td>{{$registro->nombre}}</td>
+                                        <td>{{$registro->email}}</td>
+                                        <td>{{$registro->correo}}</td>
+                                        <td><a href="#"><i class="fas fa-window-restore"></i></a></td>
+                                        <td><a href="#" class="btn btn-warning">Editar</a></td>
+                                        <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                                        @endforeach
                                     </tr>
                                 </tbody>
                               </table>

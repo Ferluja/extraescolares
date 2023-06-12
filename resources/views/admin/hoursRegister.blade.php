@@ -1,45 +1,42 @@
 @extends('layout.scaffold')
-    <title>{{$titulo}}</title>
-    <link rel="stylesheet" href={{asset('bootstrap/css/scaffold.css')}}>
-    <link rel="stylesheet" href={{asset('bootstrap/css/hoursRegister.css')}}>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                @section('user')
-                    <img src="https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile" class="rounded-circle shadow-lg my-4" width="150" height="150">
-                    <h2 class="fs-5 fw-light mb-0" style="color: black">Usuario</h2>
-                    <small class="text fw-bold" style="color: black">{{@session('nombre_usuario')}}</small>
-                @endsection
-                @section('menu')
-                    <li class="mb-2 w-100 mt-3">
-                        <a href="{{route('dashboard')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-layer-group me-2"></i>Mis creditos</a>
-                    </li>
-                    <li class="mb-2 w-100">
-                        <a href="{{route('registrarHoras')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-clock me-2"></i>Registrar horas</a>
-                    </li>
-                    <li class="mb-2 w-100">
-                        <a href="{{route('registro')}}" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-user me-2"></i>Agregar usuario</a>
-                    </li>
-                    <li class="mb-2 w-100">
-                        <a href="#" class="btn btn-light rounded-pill text-start w-100"><i class="fa-solid fa-users me-2"></i>Lista usuarios</a>
-                    </li>
-                @endsection
-                @section('main')
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-3 mt-4">
-                                <a href="#" class="btn btn-success badge-container  d-flex align-items-center justify-content-center mx-auto">
-                                    <i class="fas fa-clock fa-5x icon-deportivo"></i>
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <h2 class="text-center">Registrar horas</h2>
-                                <hr>
-                                <h5>Registra la participación de tus actividades o eventos</h5>
-                                <li>Eventos en el que participaste.</li>
-                                <li>Evidencias o constancia.</li>
-                                <li>Todo en formato PDF.</li>
-                            </div>
+<title>{{ $titulo }}</title>
+<link rel="stylesheet" href={{ asset('bootstrap/css/scaffold.css') }}>
+<link rel="stylesheet" href={{ asset('bootstrap/css/hoursRegister.css') }}>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @section('user')
+                <img src="https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Profile" class="rounded-circle shadow-lg my-4" width="150" height="150">
+                <h2 class="fs-5 fw-light mb-0">Usuario</h2>
+                <small class="text-muted">{{ @session('nombre_usuario') }}</small>
+            @endsection
+            @section('menu')
+                <li class="mb-2 w-100 mt-3">
+                    <a href="{{ route('dashboard') }}" class="btn btn-light rounded-pill text-start w-100"><i
+                            class="fa-solid fa-layer-group me-2"></i>Mis creditos</a>
+                </li>
+                <li class="mb-2 w-100">
+                    <a href="{{ route('registrarHoras') }}" class="btn btn-light rounded-pill text-start w-100"><i
+                            class="fa-solid fa-clock me-2"></i>Registrar horas</a>
+                </li>
+                <li class="mb-2 w-100">
+                    <a href="{{ route('registro') }}" class="btn btn-light rounded-pill text-start w-100"><i
+                            class="fa-solid fa-user me-2"></i>Agregar usuario</a>
+                </li>
+                <li class="mb-2 w-100">
+                    <a href="{{ route('listaUsuarios') }}" class="btn btn-light rounded-pill text-start w-100"><i
+                            class="fa-solid fa-users me-2"></i>Lista usuarios</a>
+                </li>
+            @endsection
+            @section('main')
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3 mt-4">
+                            <a href="#"
+                                class="btn btn-success badge-container  d-flex align-items-center justify-content-center mx-auto">
+                                <i class="fas fa-clock fa-5x icon-deportivo"></i>
+                            </a>
                         </div>
                         <div class="col-md-9">
                             <h2 class="text-center">Registrar horas</h2>
@@ -143,6 +140,15 @@
                                                                 <label for="horas" class="form-label"><i
                                                                         class="fas fa-pen-square"></i> Nombre del
                                                                     evento</label>
+                                                                <div class="form-floating mb-3 mt-4">
+                                                                    <input type="number"
+                                                                        class="form-control rounded-pill border border-success"
+                                                                        id="semestre" name="semestre"
+                                                                        placeholder="Semestre"
+                                                                        value="{{ old('semestre') }}">
+                                                                    <label for="horas" class="form-label"><i
+                                                                            class="fas fa-pen-square"></i> Semestre</label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -217,63 +223,65 @@
                                                                             class="fa-solid fa-plus"></i> Agregar
                                                                         Carpeta</a>
                                                                 </div>
-                                                            </div>   
-                                                    </fieldset>
-                                                </form>
-                                                <x-flash></x-flash>
-                                            </div>
+                                                            </div>
+                                                </fieldset>
+                                            </form>
+                                            <x-flash></x-flash>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col">
-                                <div class="card" style="width: 55rem;">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table" id="tabla-registro" style="border: 1ch">
-                                                <thead>
-                                                    <tr>
-                                                        <th hidden>Id</th>
-                                                        <th>Nombre</th>
-                                                        <th>Apellido paterno</th>
-                                                        <th>Apellido materno</th>
-                                                        <th>Carrera</th>
-                                                        <th>No.Control</th>
-                                                        <th>Nombre del evento</th>
-                                                        <th>Evidencias</th>
-                                                        <th>Horas</th>
-                                                        <th>Credito</th>
-                                                        <th>Generar oficio</th>
-                                                        <th>Ubicación fisica</th>
-                                                        <th>Editar</th>
-                                                        <th>Eliminar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        @foreach ($registros as $registro)
-                                                        <td hidden>{{$registro->id}}</td>
-                                                        <td>{{$registro->nombre}}</td>
-                                                        <td>{{$registro->apellido_paterno}}</td>
-                                                        <td>{{$registro->apellido_materno}}</td>
-                                                        <td>{{$registro->nombre_carrera}}</td>
-                                                        <td>{{$registro->numero_control}}</td>
-                                                        <td>{{$registro->semestre}}</td>
-                                                        <td>{{$registro->nombre_evento}}</td>
-                                                        <td>{{$registro->path_evidencia}}</td>
-                                                        <td>{{$registro->horas}}</td>
-                                                        <td>{{$registro->nombre_credito}}</td>
-                                                        <td>{{}}</td>
-                                                        <td>{{$registro->nombre_carpeta}}</td>
-                                                        <td><a href="#" class="btn-warning">Editar</a></td>
-                                                        <td><a href="#" class="btn-danger">Eliminar</a></td>
-                                                        @endforeach
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <div class="card" style="width: 55rem;">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table" id="tabla-registro" style="border: 1ch">
+                                            <thead>
+                                                <tr>
+                                                    <th hidden>Id</th>
+                                                    <th>Nombre</th>
+                                                    <th>Apellido paterno</th>
+                                                    <th>Apellido materno</th>
+                                                    <th>Carrera</th>
+                                                    <th>No.Control</th>
+                                                    <th>Semestre</th>
+                                                    <th>Nombre del evento</th>
+                                                    <th>Evidencias</th>
+                                                    <th>Horas</th>
+                                                    <th>Credito</th>
+                                                    <th>Generar oficio</th>
+                                                    <th>Ubicación fisica</th>
+                                                    <th>Editar</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    @foreach ($registros as $registro)
+                                                        <td hidden>{{ $registro->id }}</td>
+                                                        <td>{{ $registro->nombre }}</td>
+                                                        <td>{{ $registro->apellido_paterno }}</td>
+                                                        <td>{{ $registro->apellido_materno }}</td>
+                                                        <td>{{ $registro->nombre_carrera }}</td>
+                                                        <td>{{ $registro->numero_control }}</td>
+                                                        <td>{{ $registro->semestre }}</td>
+                                                        <td>{{ $registro->nombre_evento }}</td>
+                                                        <td><a href="{{ route('viewPDF', ['path' => $registro->path_evidencia]) }}"
+                                                                target="_blank"><i class="fas fa-eye"></i></a></td>
+                                                        <td>{{ $registro->horas }}</td>
+                                                        <td>{{ $registro->nombre_credito }}</td>
+                                                        <td><a href="{{ route('generarPDF', ['id' => $registro->id]) }}"><i
+                                                                    class="fas fa-file-alt me-2"></i></a></td>
+                                                        <td>{{ $registro->nombre_carpeta }}</td>
+                                                        <td><a href="{{ route('editarCreditos', ['id'=>$registro->id]) }}" class="btn btn-warning">Editar</a></td>
+                                                        <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                                                    @endforeach
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -281,8 +289,9 @@
                     </div>
                 </div>
             </div>
-        @endsection
-    </div>
+        </div>
+    @endsection
+</div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="carpeta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -292,7 +301,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Agregar Carpeta</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('carpetasPost', ['id'=>1]) }}" method="post">
+            <form action="{{ route('carpetasPost', ['id' => 1]) }}" method="post">
                 @csrf
                 @method('POST')
                 <div class="modal-body">

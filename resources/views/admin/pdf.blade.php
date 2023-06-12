@@ -40,32 +40,33 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($datosEscolares as $datos)
+      
         <tr>
           <td class="text-uppercase">Numero de control</td>
           <td class="text-center">{{$datos->numero_control}}</td>
-          <td class="text-center text-uppercase">Febrero - Junio 2023</td>
+          <td class="text-center text-uppercase">{{$periodo}}</td>
         </tr>
        
-      @endforeach
-      @foreach ($datosUsuarios as $usuarios)
+      
+      
         <tr>
           <td>Nombre</td>
-          <td class="text-center font-weight-bold text-uppercase" colspan="2">{{$usuarios->apellido_paterno . ' ' .  $usuarios->apellido_materno  . ' ' .  $usuarios->nombre}}</td>
+          <td class="text-center font-weight-bold text-uppercase" colspan="2">{{$datos->apellido_paterno . ' ' .  $datos->apellido_materno  . ' ' .  $datos->nombre}}</td>
         </tr>
-      @endforeach
+      
         <tr>
           <td class="text-uppercase">Actividad <hr>
-            Participación como Trovador en evento del 14 de febrero
+            {{$datos->nombre_evento}}
           </td>
-          <td class="text-uppercase text-center">Fecha <hr> 14/02/2023</td>
-          <td class="text-uppercase text-center">Grupo <hr> 8sis</td>
+          <td class="text-uppercase text-center">Fecha <hr> {{$fecha}}</td>
+          <td class="text-uppercase text-center">Grupo <hr> {{$datos->semestre . '' . $grupo}}</td>
         </tr>
 
         <tr>
           <td class="text-uppercase">HRS. Acreditadas</td>
-          <td class="text-uppercase text-center" colspan="2">5 horas civicas</td>
+          <td class="text-uppercase text-center" colspan="2">{{$datos->horas.' '. 'horas' .' '. $credito}}</td>
         </tr>
+        
     </tbody>
   </table>
   <p class="text-uppercase text-justify text-padding"> <span class="font-weight-bold">NOTA:</span> El alumno debe conservar este documento y entregarlo al despartamento de extraescolares al complementar un crédito equivalente a 20 hrs.</p>
