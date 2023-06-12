@@ -7,8 +7,8 @@
             <div class="col">
                 @section('user')
                     <img src="https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile" class="rounded-circle shadow-lg my-4" width="150" height="150">
-                    <h2 class="fs-5 fw-light mb-0">Usuario</h2>
-                    <small class="text-muted">{{@session('nombre_usuario')}}</small>
+                    <h2 class="fs-5 fw-light mb-0" style="color: black">Usuario</h2>
+                    <small class="text fw-bold" style="color: black">{{@session('nombre_usuario')}}</small>
                 @endsection
                 @section('menu')
                     <li class="mb-2 w-100 mt-3">

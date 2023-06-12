@@ -9,7 +9,7 @@
         <div class="text-center">
             <div>
                 <h1 class="fs-3 fw-bold mb-0">S.G.E</h1>
-                <small class="text-muted">(Sistema de Gestión de Extraescolares)</small>
+                <small class="fw-bold text" style="color: white">(Sistema de Gestión de Extraescolares)</small>
             </div>
             <div>
                 @yield('user')
