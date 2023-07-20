@@ -15,6 +15,7 @@ use App\Rules\ValidaSelect;
 use Illuminate\Support\Facades\DB;
 use File;
 use Response;
+
 class RutasProtegidasAdminController extends Controller
 {
     public function __construct()
@@ -98,53 +99,66 @@ class RutasProtegidasAdminController extends Controller
         $carpetas = CatCarpetas::all();
         $creditos = CatCreditos::all();
         $registros = DB::table('registro_horas')
-        ->join('cat_carreras','id','=','registro_horas.id_carrera')
-        ->join('cat_creditos','id','=','registro_horas.id_credito')
-        ->join('cat_carpetas','id','=','registro_horas.id_carpeta')
-        ->select('nombre','apellido_paterno','apellido_materno','cat_carerras.nombre_carrera'
-        ,'numero_control','semestre','nombre_evento','path_evidencia','horas',
-        'cat_creditos.nombre_credito','cat_carpetas.nombre_carpeta')->get();
+            ->join('cat_carreras', 'id', '=', 'registro_horas.id_carrera')
+            ->join('cat_creditos', 'id', '=', 'registro_horas.id_credito')
+            ->join('cat_carpetas', 'id', '=', 'registro_horas.id_carpeta')
+            ->select(
+                'nombre',
+                'apellido_paterno',
+                'apellido_materno',
+                'cat_carerras.nombre_carrera',
+                'numero_control',
+                'semestre',
+                'nombre_evento',
+                'path_evidencia',
+                'horas',
+                'cat_creditos.nombre_credito',
+                'cat_carpetas.nombre_carpeta'
+            )->get();
 
         return view('admin.hoursRegister', compact('titulo', 'carreras', 'carpetas', 'creditos', 'registros'));
     }
-    public function registrar_horas_post(Request $request){
-        $request->validate([
-            'nombre' => 'required',
-            'apellido_paterno' => 'required',
-            'apellido_materno' => 'required',
-            'carrera' => [new ValidaSelect],
-            'numero_control' => 'required|numeric',
-            'evento' => 'required',
-            'evidencia' => 'required|mimes:pdf',
-            'horas' => 'required|numeric',
-            'credito'=> [new ValidaSelect],
-            'carpeta' => [new ValidaSelect],
-        ],
-        [
-            'nombre.required' => 'El campo nombre esta vacío',
-            'apellido_paterno.required' => 'El campo apellido paterno esta vacío',
-            'apellido_materno.required' => 'El campo apellido materno esta vaćio',
-            'numero_control.required' => 'El campo numero de control esta vacío',
-            'numero_control.numeric' => 'El campo numero de control solo acepta numeros',
-            'evento.required' => 'El campo evento esta vacío',
-            'evidencia.required' => 'El campo evidencia esta vacío',
-            'evidencia.mimes' => 'Solo se aceptan archivos PDF en el campo evidencia',
-            'horas.required' => 'El campo de horas esta vacío',
-            'horas.numeric' => 'El campo horas solo acepta numeros',
-        ]);
-        
-        
+    public function registrar_horas_post(Request $request)
+    {
+        $request->validate(
+            [
+                'nombre' => 'required',
+                'apellido_paterno' => 'required',
+                'apellido_materno' => 'required',
+                'carrera' => [new ValidaSelect],
+                'numero_control' => 'required|numeric',
+                'evento' => 'required',
+                'evidencia' => 'required|mimes:pdf',
+                'horas' => 'required|numeric',
+                'credito' => [new ValidaSelect],
+                'carpeta' => [new ValidaSelect],
+            ],
+            [
+                'nombre.required' => 'El campo nombre esta vacío',
+                'apellido_paterno.required' => 'El campo apellido paterno esta vacío',
+                'apellido_materno.required' => 'El campo apellido materno esta vaćio',
+                'numero_control.required' => 'El campo numero de control esta vacío',
+                'numero_control.numeric' => 'El campo numero de control solo acepta numeros',
+                'evento.required' => 'El campo evento esta vacío',
+                'evidencia.required' => 'El campo evidencia esta vacío',
+                'evidencia.mimes' => 'Solo se aceptan archivos PDF en el campo evidencia',
+                'horas.required' => 'El campo de horas esta vacío',
+                'horas.numeric' => 'El campo horas solo acepta numeros',
+            ]
+        );
+
+
         switch ($_FILES['evidencia']['type']) {
             case 'application/pdf':
-                $archivo = time()."pdf";
+                $archivo = time() . "pdf";
                 break;
         }
-        
-        copy($_FILES['evidencia']['tmp_name'],'archivos/'.$archivo);
-        
-        $request->session()->flash('css','success');
-        $request->session()->flash('mensaje','Se guardo la informacion exitosamente');
-        
+
+        copy($_FILES['evidencia']['tmp_name'], 'archivos/' . $archivo);
+
+        $request->session()->flash('css', 'success');
+        $request->session()->flash('mensaje', 'Se guardo la informacion exitosamente');
+
         return redirect()->route('registrarHoras');
     }
 
@@ -174,12 +188,40 @@ class RutasProtegidasAdminController extends Controller
     }
     public function registrar_creditos($id)
     {
-        $titulo = 'Registrar Creditos';
-        $carreras = CatCarreras::all();
-        $carpetas = CatCarpetas::all();
-        $credito_seleccionado = CatCreditos::where(['id'=>$id])->select('id','nombre_credito')->first();
 
-        return view('admin.credit',compact('titulo','carreras','credito_seleccionado','carpetas'));
+        $titulo = 'Registrar Creditos';
+
+        $carreras = CatCarreras::all();
+
+        $carpetas = CatCarpetas::all();
+
+        $credito_seleccionado = CatCreditos::where(['id' => $id])->select('id', 'nombre_credito')->first();
+
+        $registros = DB::table('registro_creditos')
+
+            ->join('cat_carreras', 'cat_carreras.id', '=', 'registro_creditos.id_carrera')
+
+            ->join('cat_creditos', 'cat_creditos.id', '=', 'registro_creditos.id_credito')
+
+            ->join('cat_carpetas', 'cat_carpetas.id', '=', 'registro_creditos.id_carpeta')
+
+            ->select(
+                'registro_creditos.id',
+                'nombre',
+                'apellido_paterno',
+                'apellido_materno',
+                'cat_carreras.nombre_carrera',
+                'numero_control',
+                'path_mooc',
+                'path_taller',
+                'cat_creditos.nombre_credito',
+                'cat_carpetas.nombre_carpeta'
+            )->get();
+
+
+
+
+        return view('admin.credit', compact('titulo', 'carreras', 'credito_seleccionado', 'carpetas', 'registros'));
     }
     public function registrar_creditos_post(Request $request)
     {
@@ -276,5 +318,20 @@ class RutasProtegidasAdminController extends Controller
         $request->session()->flash('mensaje', 'Se guardo la infomación exitosamente');
 
         return redirect()->route('registrarCreditos', ['id' => $request->id_credito]);
+    }
+    public function lista_usuarios()
+    {
+
+        $titulo = 'Lista Usuarios';
+
+        $registros = DB::table('datos_usuarios')
+
+            ->join('users', 'users.id', '=', 'datos_usuarios.id_user')
+
+            ->select('users.email', 'datos_usuarios.nombre', 'datos_usuarios.correo')->get();
+
+
+
+        return view('admin.users', compact('titulo', 'registros'));
     }
 }

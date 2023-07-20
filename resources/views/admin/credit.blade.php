@@ -228,10 +228,8 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($registros as $registro)
                                 <tr>
-                                    @foreach ($registros as $registro)
-                                        
-                                    
                                     <td hidden>{{$registro->id}}</td>
                                     <td>{{$registro->numero_control}}</td>
                                     <td>{{$registro->nombre}}</td>
@@ -244,8 +242,8 @@
                                     <td>{{$registro->nombre_carpeta}}</td>
                                     <td><a href="#" class="btn btn-warning">Editar</a></td>
                                     <td><a href="#" class="btn btn-danger">Eliminar</a></td>
-                                    @endforeach
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

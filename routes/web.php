@@ -37,7 +37,8 @@ Route::put('/editar_horas',[RutasProtegidasAdminController::class,'editar_credit
 Route::post('/carpetas_post',[RutasProtegidasAdminController::class,'carpetas_post'])->name('carpetasPost');
 Route::get('/creditos/{id}', [RutasProtegidasAdminController::class,'registrar_creditos'])->name('registrarCreditos');
 Route::get('/addc',[RutasProtegidasAdminController::class,'catCreditos']);
-
+Route::get('/lista_usuarios',[RutasProtegidasAdminController::class,'lista_usuarios'])->name('listaUsuarios');
+Route::post('/registrar_creditos_post',[RutasProtegidasAdminController::class,'registrar_creditos_post'])->name('registrarCreditosPost');
 /*Rutas de los estudiantes*/
 
 
